@@ -1,7 +1,12 @@
 <section>
 	
 	<!-- Insert form here -->
-	<p>Form goes here.</p>
+	<form #f="ngForm" (ngSubmit)="searchArtist(search)">
+		<input #search type="text">
+		<input type="submit" value="Click Me">
+	</form>
+	<!-- <input #search type="text"> -->
+	<!-- <button (click)="searchArtist(search.value)">Click Me</button> -->
 
 	<!-- Artist Result Component
 	ngIf successful retrieval
