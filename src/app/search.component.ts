@@ -11,14 +11,14 @@ import { GetArtistService } from './get-artist.service';
 export class SearchComponent {
 
 	constructor(
-		private getArtistService: GetArtistService
+		private _getArtistService: GetArtistService
 		){}
 
-	// run(val) { console.log('search.value',val); }
 
-	searchArtist(q) {
-		this.getArtistService.getArtist(q.value);
-		// console.log('search.value',q);
+	searchArtist(f: NgForm): void {
+		console.log('f:',f);
+		this._getArtistService.getArtist(f.value.search);
+
 	}
 
 }

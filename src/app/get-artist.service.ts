@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class GetArtistService {
 	constructor(private http: Http){}
 
-	getArtist(q): void {
+	getArtist(q: string): void {
 		console.log('From service, search for '+q);
 	}
 
