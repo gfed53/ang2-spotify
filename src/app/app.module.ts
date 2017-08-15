@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search.component';
 import { ArtistResultComponent } from './artist-result.component';
+import { PostsComponent } from './posts/posts.component';
 
 // Services
 import { GetArtistService } from './get-artist.service';
@@ -21,7 +22,8 @@ import { GetAuthTokenService } from './get-auth-token.service';
   declarations: [
     AppComponent,
     SearchComponent,
-    ArtistResultComponent
+    ArtistResultComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
