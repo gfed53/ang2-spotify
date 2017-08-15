@@ -9,6 +9,7 @@ import { GetArtistService } from './get-artist.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+	
 
 	constructor(
 		private _getArtistService: GetArtistService
