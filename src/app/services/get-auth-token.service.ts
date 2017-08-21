@@ -12,4 +12,6 @@ export class GetAuthTokenService {
 	
 	authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
+	
+
 }

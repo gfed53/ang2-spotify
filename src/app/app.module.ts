@@ -17,6 +17,7 @@ import { OAuthComponent } from './oauth/oauth.component';
 import { GetArtistService } from './services/get-artist.service';
 import { GetRelatedService } from './services/get-related.service';
 import { GetAuthTokenService } from './services/get-auth-token.service';
+import { GetApiKeyService } from './services/get-api-key.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { GetAuthTokenService } from './services/get-auth-token.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [GetArtistService, GetRelatedService, GetAuthTokenService],
+  providers: [GetApiKeyService, GetAuthTokenService, GetArtistService, GetRelatedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

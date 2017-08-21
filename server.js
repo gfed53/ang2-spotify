@@ -6,6 +6,8 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
+const config = require('./server/config.js');
+
 // Get our API routes
 const api = require('./server/routes/api');
 
@@ -29,8 +31,8 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
-app.set('port', port);
+// const port = process.env.PORT || '3000';
+app.set('port', config.PORT);
 
 /**
  * Create HTTP server.
@@ -40,4 +42,4 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+server.listen(config.PORT, () => console.log(`API running on localhost:${config.PORT}`));
