@@ -2,11 +2,10 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  
 import { AppComponent }   from './app.component';
-import { PostsComponent } from './posts/posts.component';
+import { OAuthComponent } from './oauth/oauth.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'posts', component: PostsComponent }
+  { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -6,8 +6,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { SAMPLE } from './sample.mock';
-import { Mock } from './mock';
+import { SAMPLE } from '../sample.mock';
+import { Mock } from '../mock';
 
 @Injectable()
 export class GetArtistService {

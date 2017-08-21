@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetAuthTokenService {
 	constructor(private http: Http){}
-
+	
+	authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
 }

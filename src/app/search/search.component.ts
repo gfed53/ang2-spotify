@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { GetArtistService } from './get-artist.service';
+import { GetArtistService } from '../services/get-artist.service';
 
 @Component({
   selector: 'search',

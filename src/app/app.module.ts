@@ -9,21 +9,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search.component';
-import { ArtistResultComponent } from './artist-result.component';
-import { PostsComponent } from './posts/posts.component';
+import { SearchComponent } from './search/search.component';
+import { ArtistResultComponent } from './artist-result/artist-result.component';
+import { OAuthComponent } from './oauth/oauth.component';
 
 // Services
-import { GetArtistService } from './get-artist.service';
-import { GetRelatedService } from './get-related.service';
-import { GetAuthTokenService } from './get-auth-token.service';
+import { GetArtistService } from './services/get-artist.service';
+import { GetRelatedService } from './services/get-related.service';
+import { GetAuthTokenService } from './services/get-auth-token.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ArtistResultComponent,
-    PostsComponent
+    OAuthComponent
   ],
   imports: [
     BrowserModule,
