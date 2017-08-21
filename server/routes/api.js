@@ -8,14 +8,15 @@ const axios = require('axios');
 
 const config = require('../config');
 
-/* GET api listing. */
+// GET api listing.
 router.get('/', (req, res) => {
   res.send('api works');
 });
 
-//Get our API key(s)
+// Get our API key(s)
 router.get('/access', (req, res) => {
     res.json(config.KEYS);
 });
+
 
 module.exports = router;

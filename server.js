@@ -23,6 +23,11 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Set our api routes
 app.use('/api', api);
 
+//Redirect URI
+app.get('/oauth-callback', (req, res) => {
+    res.sendFile(path.join(__dirname, 'external/test.html'));
+});
+
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
