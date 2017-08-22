@@ -25,7 +25,7 @@ app.use('/api', api);
 
 //Redirect URI
 app.get('/oauth-callback', (req, res) => {
-    res.sendFile(path.join(__dirname, 'external/test.html'));
+    res.sendFile(path.join(__dirname, 'external/oauth-callback.html'));
 });
 
 // Catch all other routes and return the index file

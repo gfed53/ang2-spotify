@@ -8,12 +8,22 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetApiKeyService {
 
-	constructor(private http: Http) { }
+	keyObj: object;
 
-	getKey(): void {
+	constructor(private http: Http) { 
+		// this.getKey()
+		// 	.subscribe(obj => { this.keyObj = obj; });
+		// 	console.log('in constr',this.keyObj);
+	}
+
+	getKey(callback: (data) => void) {
 		this.http.get('/api/access')
 			.map((res) => res.json())
-			.subscribe(obj => {console.log('obj',obj)});
+			.subscribe(obj => {
+					callback(obj);
+				});
 		}
+
+	// this.getKey();
 
 }
