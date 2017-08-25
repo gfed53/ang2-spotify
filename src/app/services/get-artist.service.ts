@@ -9,9 +9,19 @@ import 'rxjs/add/operator/map';
 import { SAMPLE } from '../sample.mock';
 import { Mock } from '../mock';
 
+import { GetAuthTokenService } from './get-auth-token.service';
+
 @Injectable()
 export class GetArtistService {
 	constructor(private http: Http){}
+
+	// getArtist(q: string): void {
+	// 	//Mock for now
+	// 	console.log('From service, search for '+q);
+	// 	let current = SAMPLE.filter((item) => item.name === q);
+	// 	console.log('current',current);
+
+	// }
 
 	getArtist(q: string): void {
 		//Mock for now
