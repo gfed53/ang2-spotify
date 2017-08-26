@@ -1,7 +1,7 @@
 // Grabs artist using Spotify's API search endpoint and provided search query
 
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -13,7 +13,7 @@ import { GetAuthTokenService } from './get-auth-token.service';
 
 @Injectable()
 export class GetArtistService {
-	constructor(private http: Http){}
+	constructor(private _http: Http, private _getAuthTokenService: GetAuthTokenService){}
 
 	// getArtist(q: string): void {
 	// 	//Mock for now
@@ -24,10 +24,30 @@ export class GetArtistService {
 	// }
 
 	getArtist(q: string): void {
-		//Mock for now
-		console.log('From service, search for '+q);
-		let current = SAMPLE.filter((item) => item.name === q);
-		console.log('current',current);
+		this._getAuthTokenService.getToken()
+			.then((token)=> {
+				console.log('token!',token);
+				let url = 'https://api.spotify.com/v1/search';
+				let params = new URLSearchParams();
+				params.append('q', q);
+				params.append('type', 'artist');
+
+				let headers = new Headers({'Authorization': `Bearer ${token}`});
+
+				let options = new RequestOptions({headers, params});
+				console.log('params',params);
+				console.log('headers',headers);
+				console.log('options',options);
+
+				this._http.get(url, options)
+					.subscribe(data => {
+						console.log('data',data);
+					});
+
+			});
+		
+
+		
 
 	}
 
