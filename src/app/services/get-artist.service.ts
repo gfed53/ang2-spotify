@@ -40,8 +40,10 @@ export class GetArtistService {
 				console.log('options',options);
 
 				this._http.get(url, options)
-					.subscribe(data => {
-						console.log('data',data);
+					.map(res => res.json())
+					.map(data => data.artists.items[0])
+					.subscribe(artist => {
+						console.log('artist',artist);
 					});
 
 			});
