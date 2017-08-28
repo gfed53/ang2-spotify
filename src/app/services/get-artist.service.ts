@@ -42,6 +42,14 @@ export class GetArtistService {
 				this._http.get(url, options)
 					.map(res => res.json())
 					.map(data => data.artists.items[0])
+					.map(artist => {
+						return {
+							name: artist.name,
+							url: artist.external_urls.spotify,
+							images: artist.images,
+							popularity: artist.popularity
+						}
+					})
 					.subscribe(artist => {
 						console.log('artist',artist);
 					});

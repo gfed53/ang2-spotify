@@ -28,9 +28,6 @@ export class GetAuthTokenService {
 				//Use key
 				console.log('in auth service:',obj.spotID);
 
-				//Testing 
-				// return null;
-
 				//get() returns token if it exists. If not, we run auth(). use this.get(authObj, obj.spotID)
 
 				resolve(this.get(authObj, obj.spotID));

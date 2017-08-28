@@ -7,6 +7,8 @@ import { GetArtistService } from '../services/get-artist.service';
 import { GetApiKeyService } from '../services/get-api-key.service';
 import { GetAuthTokenService } from '../services/get-auth-token.service';
 
+import { Artist } from '../types/artist';
+
 @Component({
   selector: 'search',
   templateUrl: './search.component.html',
@@ -16,25 +18,20 @@ export class SearchComponent implements OnInit {
 	
 
 	constructor(
-		private _getArtistService: GetArtistService, private _getApiKeyService: GetApiKeyService,
+		private _getArtistService: GetArtistService,
 		private _getAuthTokenService: GetAuthTokenService
 		){}
 
 
 	searchArtist(f: NgForm): void {
-		console.log('f:',f);
 		this._getArtistService.getArtist(f.value.search);
 
 	}
 
 	//Testing
 	ngOnInit() {
-
-		// console.log('in comp:',this._getApiKeyService.keyObj);
-		this._getAuthTokenService.getToken()
-			.then((foo)=> {
-				console.log('foo!',foo);
-			});
+		//Check if token needs to be refreshed.
+		this._getAuthTokenService.getToken();
 		
   	}
 
