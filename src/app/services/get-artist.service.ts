@@ -6,8 +6,11 @@ import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+//test
 import { SAMPLE } from '../sample.mock';
 import { Mock } from '../mock';
+
+import { Artist } from '../types/artist';
 
 import { GetAuthTokenService } from './get-auth-token.service';
 
@@ -15,50 +18,32 @@ import { GetAuthTokenService } from './get-auth-token.service';
 export class GetArtistService {
 	constructor(private _http: Http, private _getAuthTokenService: GetAuthTokenService){}
 
-	// getArtist(q: string): void {
-	// 	//Mock for now
-	// 	console.log('From service, search for '+q);
-	// 	let current = SAMPLE.filter((item) => item.name === q);
-	// 	console.log('current',current);
+	getArtist(q: string): any {
+		let token = this._getAuthTokenService.token;
+		console.log('token!',token);
+		let url = 'https://api.spotify.com/v1/search';
+		let params = new URLSearchParams();
+		params.append('q', q);
+		params.append('type', 'artist');
 
-	// }
+		let headers = new Headers({'Authorization': `Bearer ${token}`});
 
-	getArtist(q: string): void {
-		this._getAuthTokenService.getToken()
-			.then((token)=> {
-				console.log('token!',token);
-				let url = 'https://api.spotify.com/v1/search';
-				let params = new URLSearchParams();
-				params.append('q', q);
-				params.append('type', 'artist');
+		let options = new RequestOptions({headers, params});
+		console.log('params',params);
+		console.log('headers',headers);
+		console.log('options',options);
 
-				let headers = new Headers({'Authorization': `Bearer ${token}`});
-
-				let options = new RequestOptions({headers, params});
-				console.log('params',params);
-				console.log('headers',headers);
-				console.log('options',options);
-
-				this._http.get(url, options)
-					.map(res => res.json())
-					.map(data => data.artists.items[0])
-					.map(artist => {
-						return {
-							name: artist.name,
-							url: artist.external_urls.spotify,
-							images: artist.images,
-							popularity: artist.popularity
-						}
-					})
-					.subscribe(artist => {
-						console.log('artist',artist);
-					});
-
+		return this._http.get(url, options)
+			.map(res => res.json())
+			.map(data => data.artists.items[0])
+			.map(artist => {
+				return {
+					name: artist.name,
+					url: artist.external_urls.spotify,
+					images: artist.images,
+					popularity: artist.popularity
+				}
 			});
-		
-
-		
-
 	}
 
 }

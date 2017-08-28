@@ -16,6 +16,7 @@ import { Artist } from '../types/artist';
 })
 export class SearchComponent implements OnInit {
 	
+	currentArtist: Artist;
 
 	constructor(
 		private _getArtistService: GetArtistService,
@@ -24,7 +25,10 @@ export class SearchComponent implements OnInit {
 
 
 	searchArtist(f: NgForm): void {
-		this._getArtistService.getArtist(f.value.search);
+		this._getArtistService.getArtist(f.value.search)
+		.subscribe(artist => {
+						console.log('artist in comp',artist);
+					});
 
 	}
 

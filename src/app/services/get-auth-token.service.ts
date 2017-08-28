@@ -14,7 +14,7 @@ export class GetAuthTokenService {
 	
 	// authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
-	public token: any;
+	token: string;
 
 	getToken(): any {
 
@@ -38,7 +38,7 @@ export class GetAuthTokenService {
 	}
 
 	auth(key): void {
-		console.log('key:',key);
+		// console.log('key:',key);
 		let url = 'https://accounts.spotify.com/authorize';
 		let redirect_uri = 'http://localhost:3000/oauth-callback';
 
@@ -49,10 +49,10 @@ export class GetAuthTokenService {
 	//Checks if authObj.time_stamp + authObj.expires_in > Date.now();
 	// Returns boolean
 	isExpired(authObj){	
-		console.log('time_stamp',authObj.oauth.time_stamp);
-		console.log('expires_in',authObj.oauth.expires_in);
-		console.log('date now', Date.now());
-		console.log('bool is',authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now());
+		// console.log('time_stamp',authObj.oauth.time_stamp);
+		// console.log('expires_in',authObj.oauth.expires_in);
+		// console.log('date now', Date.now());
+		// console.log('bool is',authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now());
 		// return false;
 		return authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now();
 	}
@@ -60,21 +60,10 @@ export class GetAuthTokenService {
 	get(authObj, key): any {
 		console.log('authObj:',authObj);
 		if(authObj !== null && authObj !== undefined && !this.isExpired(authObj)){
-			return authObj.oauth.access_token;
+			this.token = authObj.oauth.access_token;
 		} else {
 			this.auth(key);
 		}
 	}
-
-	// oauth :
-// access_token:
-// "BQAdczJeu1Zv5cGQ1d_p8l_wSYpmegmJZ_w-AR0Q9g9YwHtqktUaSm9WQgeUcKn5eI8GIvkf6pszhX-OwF8xt-GZSnjoL0-K9VSX5WbrlFUHmmaP-HekL98Uo37BB8wGqXhstGqW0A"
-// expires_in:
-// "3600"
-// time_stamp:
-// 1503683565297
-	
-
-
 
 }
