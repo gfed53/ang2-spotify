@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Artist } from '../types/artist';
 
 @Component({
   selector: 'artist-result',
@@ -7,5 +9,6 @@ import { Component } from '@angular/core';
 })
 
 export class ArtistResultComponent {
-  
+	@Input() currentArtist: Artist;
+
 }

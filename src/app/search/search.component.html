@@ -5,11 +5,9 @@
 		<input name="search" ngModel #search="ngModel">
 		<input type="submit" value="Click Me">
 	</form>
-	<!-- <input #search type="text"> -->
-	<!-- <button (click)="searchArtist(search.value)">Click Me</button> -->
 
 	<!-- Artist Result Component
 	ngIf successful retrieval
 	 -->
-	 <artist-result></artist-result>
+	 <artist-result *ngIf="currentArtist" [currentArtist]="currentArtist"></artist-result>
 </section>

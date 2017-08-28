@@ -27,7 +27,8 @@ export class SearchComponent implements OnInit {
 	searchArtist(f: NgForm): void {
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
-						console.log('artist in comp',artist);
+						this.currentArtist = artist;
+						console.log('this.currentArtist',this.currentArtist);
 					});
 
 	}
