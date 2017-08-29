@@ -35,10 +35,14 @@ export class GetArtistService {
 
 		return this._http.get(url, options)
 			.map(res => res.json())
-			.map(data => data.artists.items[0])
+			.map(data => {
+				console.log('before filtering',data.artists.items[0]);
+				return data.artists.items[0];
+			})
 			.map(artist => {
 				return {
 					name: artist.name,
+					id: artist.id,
 					url: artist.external_urls.spotify,
 					images: artist.images,
 					popularity: artist.popularity

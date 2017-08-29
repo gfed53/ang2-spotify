@@ -3,4 +3,9 @@
 	<p>{{ currentArtist.name }}</p>
 	<p>{{ currentArtist.url }}</p>
 	<img src="{{currentArtist.images[0].url}}" alt="">
+	<section>
+		<button (click)="getRelated(currentArtist.id, 'mainstream')">Go Mainstream</button>
+		<button>Go Hipster</button>
+		<button>Go Whatever</button>
+	</section>
 </section>
