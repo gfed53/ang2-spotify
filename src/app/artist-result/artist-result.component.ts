@@ -12,16 +12,19 @@ import { Artist } from '../types/artist';
 
 export class ArtistResultComponent {
 	@Input() currentArtist: Artist;
+	@Input() isFetching: boolean;
 
 	constructor(
 		private _getRelatedService: GetRelatedService
 		){}
 
-	getRelated(id: string, type: string): void{
+	getRelated(id: string, type: string): void {
+		this.isFetching = true;
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
 						this.currentArtist = artist;
 						console.log('this.currentArtist changed, now..',this.currentArtist);
+						this.isFetching = false;
 					});
 	}
 

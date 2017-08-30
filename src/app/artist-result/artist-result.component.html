@@ -1,4 +1,7 @@
-<section>
+<section *ngIf="isFetching">
+	<p>Searching..</p>
+</section>
+<section *ngIf="currentArtist && !isFetching">
 	<p>{{ currentArtist.name }}</p>
 	<img src="{{currentArtist.images[0].url}}" alt="">
 	<section>

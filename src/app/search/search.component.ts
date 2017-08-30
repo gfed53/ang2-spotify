@@ -17,6 +17,7 @@ import { Artist } from '../types/artist';
 export class SearchComponent implements OnInit {
 	
 	currentArtist: Artist;
+	isFetching: boolean;
 
 	constructor(
 		private _getArtistService: GetArtistService,
@@ -25,15 +26,16 @@ export class SearchComponent implements OnInit {
 
 
 	searchArtist(f: NgForm): void {
+		this.isFetching = true;
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
 						this.currentArtist = artist;
 						console.log('this.currentArtist',this.currentArtist);
+						this.isFetching = false;
 					});
 
 	}
 
-	//Testing
 	ngOnInit() {
 		//Check if token needs to be refreshed.
 		this._getAuthTokenService.getToken();
