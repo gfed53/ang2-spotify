@@ -1,7 +1,11 @@
-<section *ngIf="isFetching">
+<section *ngIf="isFetching.val">
 	<p>Searching..</p>
 </section>
-<section *ngIf="currentArtist && !isFetching">
+hasError: {{ hasError }}
+<section *ngIf="hasError.val">
+	<p>Sorry, an error occured..</p>
+</section>
+<section *ngIf="currentArtist && !isFetching.val && !hasError.val">
 	<p>{{ currentArtist.name }}</p>
 	<img src="{{currentArtist.images[0].url}}" alt="">
 	<section>

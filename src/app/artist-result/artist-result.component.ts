@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 import { GetRelatedService } from '../services/get-related.service';
 
@@ -12,19 +12,23 @@ import { Artist } from '../types/artist';
 
 export class ArtistResultComponent {
 	@Input() currentArtist: Artist;
-	@Input() isFetching: boolean;
+	@Input() isFetching: {val: boolean};
+	@Input() hasError: {val: boolean};
 
 	constructor(
 		private _getRelatedService: GetRelatedService
 		){}
 
 	getRelated(id: string, type: string): void {
-		this.isFetching = true;
+		this.isFetching.val = true;
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
 						this.currentArtist = artist;
 						console.log('this.currentArtist changed, now..',this.currentArtist);
-						this.isFetching = false;
+						this.hasError.val = false;
+						this.isFetching.val = false;
+					}, e => {
+						this.hasError.val = true;
 					});
 	}
 

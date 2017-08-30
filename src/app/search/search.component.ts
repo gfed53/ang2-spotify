@@ -17,7 +17,8 @@ import { Artist } from '../types/artist';
 export class SearchComponent implements OnInit {
 	
 	currentArtist: Artist;
-	isFetching: boolean;
+	isFetching = {val: false};
+	hasError = {val: false};
 
 	constructor(
 		private _getArtistService: GetArtistService,
@@ -26,12 +27,15 @@ export class SearchComponent implements OnInit {
 
 
 	searchArtist(f: NgForm): void {
-		this.isFetching = true;
+		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
 						this.currentArtist = artist;
 						console.log('this.currentArtist',this.currentArtist);
-						this.isFetching = false;
+						this.hasError.val = false;
+						this.isFetching.val = false;
+					}, e => {
+						this.hasError.val = true;
 					});
 
 	}
