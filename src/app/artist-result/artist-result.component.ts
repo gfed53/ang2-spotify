@@ -7,7 +7,7 @@ import { Artist } from '../types/artist';
 @Component({
   selector: 'artist-result',
   templateUrl: './artist-result.component.html',
-  styleUrls: ['./artist-result.component.css']
+  styleUrls: ['./artist-result.component.sass']
 })
 
 export class ArtistResultComponent {

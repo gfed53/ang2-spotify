@@ -4,6 +4,5 @@
 		<input name="search" ngModel #search="ngModel">
 		<input type="submit" value="Click Me">
 	</form>
-	hasError: {{ hasError }}
 	<artist-result [currentArtist]="currentArtist" [isFetching]="isFetching" [(hasError)]="hasError"></artist-result>
 </section>
