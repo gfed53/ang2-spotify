@@ -40,11 +40,12 @@ export class GetArtistService {
 				return data.artists.items[0];
 			})
 			.map(artist => {
+				let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
 				return {
 					name: artist.name,
 					id: artist.id,
 					url: artist.external_urls.spotify,
-					images: artist.images,
+					imageURL,
 					popularity: artist.popularity
 				}
 			});

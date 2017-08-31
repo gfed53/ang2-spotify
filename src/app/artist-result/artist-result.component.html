@@ -7,7 +7,7 @@ hasError: {{ hasError }}
 </section>
 <section *ngIf="currentArtist && !isFetching.val && !hasError.val">
 	<p>{{ currentArtist.name }}</p>
-	<img src="{{currentArtist.images[0].url}}" alt="">
+	<img src="{{ currentArtist.imageURL }}" alt="">
 	<section>
 		<button (click)="getRelated(currentArtist.id, 'mainstream')">Go Mainstream</button>
 		<button (click)="getRelated(currentArtist.id, 'hipster')">Go Hipster</button>
