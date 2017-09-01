@@ -1,8 +1,9 @@
 <section>
-	
-	<form #f="ngForm" (ngSubmit)="searchArtist(f)">
-		<input name="search" ngModel #search="ngModel">
-		<input type="submit" value="Click Me">
-	</form>
+	<div class="input-container">
+		<form #f="ngForm" (ngSubmit)="searchArtist(f)">
+			<input name="search" ngModel #search="ngModel">
+			<button type="submit">Go!</button>
+		</form>
+	</div>
 	<artist-result [currentArtist]="currentArtist" [isFetching]="isFetching" [(hasError)]="hasError"></artist-result>
 </section>
