@@ -4,8 +4,8 @@
 <section *ngIf="hasError.val">
 	<p>Sorry, an error occured..</p>
 </section>
-<section *ngIf="currentArtist && !isFetching.val && !hasError.val">
-	<p>{{ currentArtist.name }}</p>
+<section class="artist-result-container" *ngIf="currentArtist && !isFetching.val && !hasError.val">
+	<h1>{{ currentArtist.name }}</h1>
 	<img src="{{ currentArtist.imageURL }}" alt="">
 	<section>
 		<button (click)="getRelated(currentArtist.id, 'mainstream')">Go Mainstream</button>
