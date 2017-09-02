@@ -1,8 +1,8 @@
 <section *ngIf="isFetching.val">
-	<p>Searching..</p>
+	<p class="p-lg">Searching..</p>
 </section>
 <section *ngIf="hasError.val">
-	<p>Sorry, an error occured..</p>
+	<p class="p-lg">Sorry, an error occured..</p>
 </section>
 <section class="artist-result-container" *ngIf="currentArtist && !isFetching.val && !hasError.val">
 	<h1>{{ currentArtist.name }}</h1>
