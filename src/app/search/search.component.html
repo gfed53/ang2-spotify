@@ -2,7 +2,7 @@
 	<div class="input-container">
 		<form #f="ngForm" (ngSubmit)="searchArtist(f)">
 			<input name="search" ngModel #search="ngModel">
-			<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			<button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 		</form>
 	</div>
 	<artist-result [currentArtist]="currentArtist" [isFetching]="isFetching" [(hasError)]="hasError"></artist-result>

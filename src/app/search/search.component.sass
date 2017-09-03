@@ -1,4 +1,5 @@
 @import '../sass/variables'
+@import '../sass/general'
 
 .input-container
 	display: inline-block
@@ -13,13 +14,13 @@ input, button
 
 input[name="search"]
 	float: left
-	height: 33px
+	height: 35px
 	line-height: 33px
 	padding: 0 3px
 	border: 1px solid lightgrey
 	
 
-button[type="submit"]
+.btn-submit
 	float: left
 	height: 37px
 	line-height: 37px
@@ -34,3 +35,9 @@ button[type="submit"]
 @media only screen and ($tablet)
 	input[name="search"]
 		width: 300px
+
+	// button, a
+	// 	transition: 250ms ease-in-out all
+
+	// button:hover, a:hover
+	// 	background-color: $spotify-green-drk
