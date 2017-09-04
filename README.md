@@ -1,28 +1,30 @@
-# Ang2Spotify
+# App using Angular 2/4 and the Spotify API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+## Introduction
 
-## Development server
+This app allows users to search for an artist by keyword, then browse different artists by grabbing a randomly selected but related artist.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Users can also choose whether they want a more mainstream artist, or a more underground one. 
 
-## Code scaffolding
+Note that some artists may not even have related mainstream or underground artists (like Bruno Mars, for example).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+## Build Instructions
 
-## Build
+1. Make sure Node.js(along with the Node Package Manager, or NPM) is installed, then in the terminal, run `npm i` to install all dependencies.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+2. Before you start using the app, you will need to supply the app with an API key.
 
-## Running unit tests
+  * Navigate to /server/config.js.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  * You should find the places where the API keys are needed. For Spotify, only the client ID is required, not the secret key.
 
-## Running end-to-end tests
+  	* [Spotify key link](https://developer.spotify.com/web-api/)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+3. You can serve the app locally by running `npm run build`. The app listens at port 3000.
 
-## Further help
+## The Process
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Throughout the app's development, I gained experience with Angular 2/4 and TypeScript. This app was originally developed with Angular 1.x, so through the migration to the next evolution of Angular I learned more about the vastly different architecture based around Web Components, as well as static typing which is one of the many features TypeScript provides, and more.
+
+The project is still in development, so I plan on adding some new features and UX/UI tweaks in the near future.
+
