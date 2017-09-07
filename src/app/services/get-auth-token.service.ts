@@ -2,6 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -10,11 +11,16 @@ import { GetApiKeyService } from '../services/get-api-key.service';
 
 @Injectable()
 export class GetAuthTokenService {
-	constructor(private _http: Http, private _getApiKeyService: GetApiKeyService){}
+	constructor(private _http: Http, private _router: Router, private _getApiKeyService: GetApiKeyService){}
 	
 	// authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
 	token: string;
+
+	//
+	// check(): void {
+
+	// }
 
 	getToken(): any {
 
@@ -28,7 +34,8 @@ export class GetAuthTokenService {
 				//Use key
 				console.log('in auth service:',obj.spotID);
 
-				//get() returns token if it exists. If not, we run auth(). use this.get(authObj, obj.spotID)
+				//OLD: get() returns token if it exists. If not, we run auth(). use this.get(authObj, obj.spotID)
+				//NOW: get() returns boolean to determine state load, also retrieving token in service if it can.
 
 				resolve(this.get(authObj, obj.spotID));
 				
@@ -61,8 +68,11 @@ export class GetAuthTokenService {
 		console.log('authObj:',authObj);
 		if(authObj !== null && authObj !== undefined && !this.isExpired(authObj)){
 			this.token = authObj.oauth.access_token;
+			this._router.navigateByUrl('/search');
+
 		} else {
-			this.auth(key);
+			// this.auth(key);
+			this._router.navigateByUrl('/get-auth')
 		}
 	}
 

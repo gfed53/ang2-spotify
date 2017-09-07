@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GetAuthTokenService } from '../services/get-auth-token.service';
 
@@ -10,10 +11,12 @@ import { GetAuthTokenService } from '../services/get-auth-token.service';
 })
 export class CheckAuthComponent implements OnInit {
 
-  constructor(private _getAuthTokenService: GetAuthTokenService) { }
+  constructor(private _router: Router, private _getAuthTokenService: GetAuthTokenService) { }
 
   ngOnInit() {
-  	//Fire off get to check for token 
+  	//Fire off getToken
+  	this._getAuthTokenService.getToken()
+
   }
 
 }

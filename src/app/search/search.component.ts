@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
 
 	ngOnInit() {
 		//Check if token needs to be refreshed.
-		this._getAuthTokenService.getToken();
+		// this._getAuthTokenService.getToken();
 		
   	}
 
