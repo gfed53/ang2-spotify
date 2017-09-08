@@ -15,6 +15,7 @@ export class GetAuthTokenService {
 	
 	// authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
+	cID: string;
 	token: string;
 
 	//
@@ -30,9 +31,11 @@ export class GetAuthTokenService {
 			console.log('authObj',authObj);
 
 			//Get key
-			this._getApiKeyService.getKey((obj)=> {
-				//Use key
+			this._getApiKeyService.getKey((obj) => {
+				//Keep ref to client ID
 				console.log('in auth service:',obj.spotID);
+				console.log('this in _getApiKeyService', this);
+				this.cID = obj.spotID;
 
 				//OLD: get() returns token if it exists. If not, we run auth(). use this.get(authObj, obj.spotID)
 				//NOW: get() returns boolean to determine state load, also retrieving token in service if it can.
@@ -44,12 +47,14 @@ export class GetAuthTokenService {
 		});
 	}
 
-	auth(key): void {
-		// console.log('key:',key);
+	auth(): void {
+		console.log('this outside', this);
+		console.log('this.cID:',this.cID);
+
 		let url = 'https://accounts.spotify.com/authorize';
 		let redirect_uri = 'http://localhost:3000/oauth-callback';
 
-		window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + key + '&response_type=token&redirect_uri='+redirect_uri;
+		window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + this.cID + '&response_type=token&redirect_uri='+redirect_uri;
 	}
 
 
@@ -73,6 +78,13 @@ export class GetAuthTokenService {
 		} else {
 			// this.auth(key);
 			this._router.navigateByUrl('/get-auth')
+		}
+	}
+
+	//Prevents anyone from manually navigating to search or get route when they shouldn't be.
+	checkNeedRedirect(): void {
+		if(!this.token){
+			this._router.navigateByUrl('/check-auth');
 		}
 	}
 
