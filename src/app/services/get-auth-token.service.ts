@@ -82,8 +82,11 @@ export class GetAuthTokenService {
 	}
 
 	//Prevents anyone from manually navigating to search or get route when they shouldn't be.
-	checkNeedRedirect(): void {
-		if(!this.token){
+	autoRedirect(): void {
+		let url = this._router.url;
+		console.log(`what's the router say?`, this._router);
+		console.log('url',url);
+		if(!this.token && (url === '/search')){
 			this._router.navigateByUrl('/check-auth');
 		}
 	}

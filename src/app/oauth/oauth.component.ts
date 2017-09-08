@@ -18,7 +18,7 @@ export class OAuthComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		this._getAuthTokenService.autoRedirect();
 	}
 
 
