@@ -1,5 +1,13 @@
 import { Component, Input, Output } from '@angular/core';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 import { GetRelatedService } from '../services/get-related.service';
 
 import { Artist } from '../types/artist';
@@ -8,6 +16,8 @@ import { Artist } from '../types/artist';
   selector: 'artist-result',
   templateUrl: './artist-result.component.html',
   styleUrls: ['./artist-result.component.sass']
+  //flyInOut animation to be used on artist-result-container
+  
 })
 
 export class ArtistResultComponent {

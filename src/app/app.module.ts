@@ -7,6 +7,8 @@ import { HttpModule }    from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -33,7 +35,8 @@ import { GetApiKeyService } from './services/get-api-key.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [GetApiKeyService, GetAuthTokenService, GetArtistService, GetRelatedService],
   bootstrap: [AppComponent]
