@@ -15,8 +15,20 @@ import { Artist } from '../types/artist';
 @Component({
   selector: 'artist-result',
   templateUrl: './artist-result.component.html',
-  styleUrls: ['./artist-result.component.sass']
+  styleUrls: ['./artist-result.component.sass'],
   //flyInOut animation to be used on artist-result-container
+  animations: [
+  trigger('flyInOut', [
+    state('in', style({transform: 'translateX(0)'})),
+    transition('void => *', [
+      style({transform: 'translateX(-100%)'}),
+      animate(100)
+    ]),
+    transition('* => void', [
+      animate(100, style({transform: 'translateX(100%)'}))
+    ])
+  ])
+]
   
 })
 
