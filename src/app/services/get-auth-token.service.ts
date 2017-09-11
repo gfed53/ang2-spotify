@@ -19,9 +19,9 @@ export class GetAuthTokenService {
 	token: string;
 
 	//
-	// check(): void {
-
-	// }
+	hasToken(): boolean {
+		return typeof this.token === 'string';
+	}
 
 	getToken(): any {
 

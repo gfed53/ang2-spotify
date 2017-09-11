@@ -6,10 +6,19 @@ import { SearchComponent } from './search/search.component';
 import { OAuthComponent } from './oauth/oauth.component';
 import { CheckAuthComponent } from './check-auth/check-auth.component';
 
+//Guards
+import { HasTokenGuard } from './guards/has-token.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: 'check-auth', pathMatch: 'full' },
   { path: 'check-auth', component: CheckAuthComponent },
-  { path: 'search', component: SearchComponent },
+  { 
+  	path: 'search', 
+  	component: SearchComponent,
+  	canActivate: [
+		HasTokenGuard
+  	]
+  },
   { path: 'get-auth',  component: OAuthComponent }
 ];
 

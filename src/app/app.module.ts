@@ -22,6 +22,9 @@ import { GetRelatedService } from './services/get-related.service';
 import { GetAuthTokenService } from './services/get-auth-token.service';
 import { GetApiKeyService } from './services/get-api-key.service';
 
+//Guards
+import { HasTokenGuard } from './guards/has-token.guard';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { GetApiKeyService } from './services/get-api-key.service';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [GetApiKeyService, GetAuthTokenService, GetArtistService, GetRelatedService],
+  providers: [GetApiKeyService, GetAuthTokenService, GetArtistService, GetRelatedService, HasTokenGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
