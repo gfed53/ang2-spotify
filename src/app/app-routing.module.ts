@@ -8,6 +8,7 @@ import { CheckAuthComponent } from './check-auth/check-auth.component';
 
 //Guards
 import { HasTokenGuard } from './guards/has-token.guard';
+import { NoTokenGuard } from './guards/no-token.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'check-auth', pathMatch: 'full' },
@@ -19,7 +20,12 @@ const routes: Routes = [
 		HasTokenGuard
   	]
   },
-  { path: 'get-auth',  component: OAuthComponent }
+  { 
+  	path: 'get-auth', 
+  	component: OAuthComponent,
+  	canActivate: [
+  		NoTokenGuard
+  	] }
 ];
 
 @NgModule({

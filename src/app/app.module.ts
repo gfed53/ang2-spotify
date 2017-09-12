@@ -24,6 +24,7 @@ import { GetApiKeyService } from './services/get-api-key.service';
 
 //Guards
 import { HasTokenGuard } from './guards/has-token.guard';
+import { NoTokenGuard } from './guards/no-token.guard';
 
 
 @NgModule({
@@ -41,7 +42,14 @@ import { HasTokenGuard } from './guards/has-token.guard';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [GetApiKeyService, GetAuthTokenService, GetArtistService, GetRelatedService, HasTokenGuard],
+  providers: [
+	GetApiKeyService, 
+	GetAuthTokenService, 
+	GetArtistService, 
+	GetRelatedService, 
+	HasTokenGuard, 
+	NoTokenGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
