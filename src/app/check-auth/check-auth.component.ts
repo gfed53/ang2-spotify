@@ -14,9 +14,7 @@ export class CheckAuthComponent implements OnInit {
   constructor(private _router: Router, private _getAuthTokenService: GetAuthTokenService) { }
 
   ngOnInit() {
-  	//Fire off getToken
-  	this._getAuthTokenService.getToken()
-
+  	this._getAuthTokenService.getToken();
   }
 
 }

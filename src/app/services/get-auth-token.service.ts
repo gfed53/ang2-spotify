@@ -18,9 +18,16 @@ export class GetAuthTokenService {
 	cID: string;
 	token: string;
 
-	//
+	//Checks within service
 	hasToken(): boolean {
 		return typeof this.token === 'string';
+	}
+
+	//Checks within localStorage
+	needsToken(_authObj?: any): boolean {
+		let authObj = _authObj ? _authObj : JSON.parse(localStorage.getItem('spotOAuth'));
+
+		return authObj === null || authObj === undefined || this.isExpired(authObj);
 	}
 
 	getToken(): any {

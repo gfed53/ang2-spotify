@@ -14,7 +14,7 @@ export class NoTokenGuard implements CanActivate {
 	){}
 
 	canActivate(){
-		if(!this._getAuthTokenService.hasToken()){
+		if(this._getAuthTokenService.needsToken()){
 			return true;
 		} else {
 			this._router.navigateByUrl('/check-auth');
