@@ -12,8 +12,6 @@ import { GetApiKeyService } from '../services/get-api-key.service';
 @Injectable()
 export class GetAuthTokenService {
 	constructor(private _http: Http, private _router: Router, private _getApiKeyService: GetApiKeyService){}
-	
-	// authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
 	cID: string;
 	token: string;
@@ -67,34 +65,17 @@ export class GetAuthTokenService {
 
 	//Checks if authObj.time_stamp + authObj.expires_in > Date.now();
 	// Returns boolean
-	isExpired(authObj){	
-		// console.log('time_stamp',authObj.oauth.time_stamp);
-		// console.log('expires_in',authObj.oauth.expires_in);
-		// console.log('date now', Date.now());
-		// console.log('bool is',authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now());
-		// return false;
+	isExpired(authObj){
 		return authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now();
 	}
 
 	get(authObj, key): any {
 		console.log('authObj:',authObj);
-		if(authObj !== null && authObj !== undefined && !this.isExpired(authObj)){
+		if(this.needsToken(authObj)){
+			this._router.navigateByUrl('/get-auth');
+		} else {
 			this.token = authObj.oauth.access_token;
 			this._router.navigateByUrl('/search');
-
-		} else {
-			// this.auth(key);
-			this._router.navigateByUrl('/get-auth')
-		}
-	}
-
-	//Prevents anyone from manually navigating to search or get route when they shouldn't be.
-	autoRedirect(): void {
-		let url = this._router.url;
-		console.log(`what's the router say?`, this._router);
-		console.log('url',url);
-		if(!this.token && (url === '/search')){
-			this._router.navigateByUrl('/check-auth');
 		}
 	}
 

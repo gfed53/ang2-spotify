@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		// this._getAuthTokenService.autoRedirect();
   	}
 
 }
