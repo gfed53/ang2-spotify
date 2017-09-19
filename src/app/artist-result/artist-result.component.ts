@@ -8,8 +8,10 @@ import {
   transition
 } from '@angular/animations';
 
+// Services
 import { GetRelatedService } from '../services/get-related.service';
 
+// Types
 import { Artist } from '../types/artist';
 
 @Component({

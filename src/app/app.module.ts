@@ -22,6 +22,9 @@ import { GetRelatedService } from './services/get-related.service';
 import { GetAuthTokenService } from './services/get-auth-token.service';
 import { GetApiKeyService } from './services/get-api-key.service';
 
+// Directives
+import { ScrollDirective } from './directives/scroll.directive';
+
 //Guards
 import { HasTokenGuard } from './guards/has-token.guard';
 import { NoTokenGuard } from './guards/no-token.guard';
@@ -33,7 +36,8 @@ import { NoTokenGuard } from './guards/no-token.guard';
     SearchComponent,
     ArtistResultComponent,
     OAuthComponent,
-    CheckAuthComponent
+    CheckAuthComponent,
+    ScrollDirective
   ],
   imports: [
     BrowserModule,
