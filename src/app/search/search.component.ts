@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
 						this.currentArtist = artist;
-						console.log('this.currentArtist',this.currentArtist);
+						// console.log('this.currentArtist',this.currentArtist);
 						this.hasError.val = false;
 						this.isFetching.val = false;
 					}, e => {

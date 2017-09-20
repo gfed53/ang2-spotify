@@ -1,28 +1,52 @@
-import { Directive, ElementRef, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Directive, ElementRef, OnInit, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
+
+import * as $ from 'jquery';
 
 @Directive({
 	selector: '[spScroll]'
 })
-export class ScrollDirective implements AfterContentInit {
-	constructor(private elRef:ElementRef) {}
+export class ScrollDirective implements OnInit, AfterContentInit, AfterViewInit /*AfterContentChecked */{
+	constructor(private _elRef:ElementRef) {}
 
-	ngAfterContentInit() {
-		console.log('after content init fired');
+	ngOnInit(): void {
+		console.log('after on init fired');
+		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
 		this.myScroll();
 	}
 
+	ngAfterContentInit(): void {
+		console.log('after content init fired');
+		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+	}
+
+	// ngAfterContentChecked(): void {
+	// 	console.log('after content checked fired');
+	// 	this.myScroll();
+	// }
+
+	ngAfterViewInit(): void {
+		console.log('after view init fired');
+		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+		
+	}
+
+	// ngAfterViewChecked(): void {
+	// 	console.log('after view checked fired');
+	// 	this.myScroll();
+	// }
+
 	myScroll(): void {
-		console.log('should scroll to top of element');
-		// console.log('this.elRef.nativeElement.scrollHeight',this.elRef.nativeElement.scrollHeight);
+		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+
 		//Get
-		let distance = this.elRef.nativeElement.getBoundingClientRect().top;
-		console.log('distance of element from top',distance);
-		console.log('window.scrollY:',window.scrollY);
+		let elementOffset = $(this._elRef.nativeElement).offset().top;
+		
+		console.log('elementOffset',elementOffset);
+		
 
 		//Set
-		window.scrollTo(0, distance);
-		// window.scrollBy(0, distance);
-
-		console.log('should be done, window.scrollY:',window.scrollY);
+		$(window).scrollTop(elementOffset);
+		console.log('done');
+		// console.log('$(document).scrollTop():',$(window).scrollTop());
 	}
 }

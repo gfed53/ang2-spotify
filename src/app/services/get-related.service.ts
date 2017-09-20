@@ -16,20 +16,20 @@ export class GetRelatedService {
 
 	getRelated(id: string, type: string): any {
 		let token = this._getAuthTokenService.token;
-		console.log('token!',token);
+		// console.log('token!',token);
 
 		let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
 
 		let headers = new Headers({'Authorization': `Bearer ${token}`});
 		let options = new RequestOptions({headers});
 
-		console.log('url',url);
-		console.log('options',options);
+		// console.log('url',url);
+		// console.log('options',options);
 
 		return this._http.get(url, options)
 			.map(res => res.json())
 			.map(data => {
-				console.log('before filtering, data:',data);
+				// console.log('before filtering, data:',data);
 				//Just for now..
 				return data.artists;
 			})

@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, ElementRef, ViewChild } from '@angular/core';
 
 import {
   trigger,
@@ -31,7 +31,6 @@ import { Artist } from '../types/artist';
     ])
   ])
 ]
-  
 })
 
 export class ArtistResultComponent {
@@ -39,8 +38,11 @@ export class ArtistResultComponent {
 	@Input() isFetching: {val: boolean};
 	@Input() hasError: {val: boolean};
 
+  // @ViewChild('resultContainer') private resultContainer: ElementRef;
+
 	constructor(
-		private _getRelatedService: GetRelatedService
+		private _getRelatedService: GetRelatedService,
+    private _elRef: ElementRef
 		){}
 
 	getRelated(id: string, type: string): void {
@@ -48,7 +50,7 @@ export class ArtistResultComponent {
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
 						this.currentArtist = artist;
-						console.log('this.currentArtist changed, now..',this.currentArtist);
+						// console.log('this.currentArtist changed, now..',this.currentArtist);
 						this.hasError.val = false;
 						this.isFetching.val = false;
 					}, e => {
