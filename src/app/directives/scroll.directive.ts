@@ -1,3 +1,5 @@
+//TODO: Fix issue with scrollTop not registering in certain situations
+
 import { Directive, ElementRef, OnInit, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
 
 import * as $ from 'jquery';
@@ -42,7 +44,6 @@ export class ScrollDirective implements OnInit, AfterContentInit, AfterViewInit 
 		let elementOffset = $(this._elRef.nativeElement).offset().top;
 		
 		console.log('elementOffset',elementOffset);
-		
 
 		//Set
 		$(window).scrollTop(elementOffset);

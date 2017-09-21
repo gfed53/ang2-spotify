@@ -10,11 +10,7 @@ export class GetApiKeyService {
 
 	keyObj: object;
 
-	constructor(private http: Http) { 
-		// this.getKey()
-		// 	.subscribe(obj => { this.keyObj = obj; });
-		// 	console.log('in constr',this.keyObj);
-	}
+	constructor(private http: Http) {}
 
 	getKey(callback: (data) => void) {
 		this.http.get('/api/access')
@@ -23,7 +19,5 @@ export class GetApiKeyService {
 					callback(obj);
 				});
 		}
-
-	// this.getKey();
 
 }

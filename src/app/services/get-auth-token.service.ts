@@ -37,17 +37,14 @@ export class GetAuthTokenService {
 
 			//Get key
 			this._getApiKeyService.getKey((obj) => {
-				//Keep ref to client ID
+				
 				// console.log('in auth service:',obj.spotID);
 				// console.log('this in _getApiKeyService', this);
+				//Keep ref to client ID
 				this.cID = obj.spotID;
 
-				//OLD: get() returns token if it exists. If not, we run auth(). use this.get(authObj, obj.spotID)
-				//NOW: get() returns boolean to determine state load, also retrieving token in service if it can.
-
+				// get() returns boolean to determine state load, also retrieving token in service if it can.
 				resolve(this.get(authObj, obj.spotID));
-				
-
 			});
 		});
 	}
@@ -55,21 +52,19 @@ export class GetAuthTokenService {
 	auth(): void {
 		// console.log('this outside', this);
 		// console.log('this.cID:',this.cID);
-
 		let url = 'https://accounts.spotify.com/authorize';
 		let redirect_uri = 'http://localhost:3000/oauth-callback';
-
 		window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + this.cID + '&response_type=token&redirect_uri='+redirect_uri;
 	}
 
 
 	//Checks if authObj.time_stamp + authObj.expires_in > Date.now();
-	// Returns boolean
-	isExpired(authObj){
+	isExpired(authObj: any): boolean {
 		return authObj.oauth.time_stamp + (parseInt(authObj.oauth.expires_in)*1000) < Date.now();
 	}
 
-	get(authObj, key): any {
+	// Used in check-auth route. Automatically navigates to appropriate route depending on situation.
+	get(authObj: any, key: string): any {
 		// console.log('authObj:',authObj);
 		if(this.needsToken(authObj)){
 			this._router.navigateByUrl('/get-auth');
