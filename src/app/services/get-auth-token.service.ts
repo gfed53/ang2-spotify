@@ -33,12 +33,12 @@ export class GetAuthTokenService {
 		return new Promise((resolve,reject) => {
 			let authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
-			// console.log('authObj',authObj);
+			console.log('authObj',authObj);
 
 			//Get key
 			this._getApiKeyService.getKey((obj) => {
 				
-				// console.log('in auth service:',obj.spotID);
+				console.log('in auth service:',obj);
 				// console.log('this in _getApiKeyService', this);
 				//Keep ref to client ID
 				this.cID = obj.spotID;
