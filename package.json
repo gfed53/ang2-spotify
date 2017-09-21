@@ -1,5 +1,3 @@
-//Had to move all devDependencies into dependencies for build to work
-
 {
   "name": "ang2-spotify",
   "version": "0.0.0",
