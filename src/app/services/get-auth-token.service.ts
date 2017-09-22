@@ -51,7 +51,7 @@ export class GetAuthTokenService {
 
 	auth(): void {
 		// console.log('this outside', this);
-		// console.log('this.cID:',this.cID);
+		console.log('this.cID:',this.cID);
 		let url = 'https://accounts.spotify.com/authorize';
 		// let redirect_uri = 'http://localhost:3000/oauth-callback';
 		let redirect_uri = 'http://ang2-spotify.herokuapp.com/oauth-callback';

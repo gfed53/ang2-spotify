@@ -21,5 +21,4 @@ export class GetApiKeyService {
 					callback(obj);
 				});
 		}
-
 }
