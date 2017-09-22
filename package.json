@@ -9,10 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --prod"
   },
   "engines": {
-    "node": "6.11.0",
+    "node": "6.11.3",
     "npm": "3.10.10"
   },
   "private": true,
