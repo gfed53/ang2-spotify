@@ -1,5 +1,9 @@
 # App using Angular 2/4 and the Spotify API
 
+## Live Demo
+
+Here is a [live demo version](http://ang2-spotify.herokuapp.com) that you can jump right into and use. If you want to create your own build and/or learn more about the process, continue reading.
+
 ## Introduction
 
 This app allows users to search for an artist by keyword, then browse different artists by grabbing a randomly selected but related artist.
