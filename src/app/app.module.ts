@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,7 +25,7 @@ import { GetApiKeyService } from './services/get-api-key.service';
 // Directives
 import { ScrollDirective } from './directives/scroll.directive';
 
-//Guards
+// Guards
 import { HasTokenGuard } from './guards/has-token.guard';
 import { NoTokenGuard } from './guards/no-token.guard';
 
@@ -47,11 +47,11 @@ import { NoTokenGuard } from './guards/no-token.guard';
     BrowserAnimationsModule
   ],
   providers: [
-	GetApiKeyService, 
-	GetAuthTokenService, 
-	GetArtistService, 
-	GetRelatedService, 
-	HasTokenGuard, 
+	GetApiKeyService,
+	GetAuthTokenService,
+	GetArtistService,
+	GetRelatedService,
+	HasTokenGuard,
 	NoTokenGuard
   ],
   bootstrap: [AppComponent]
