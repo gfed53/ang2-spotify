@@ -31,7 +31,6 @@ export class SearchComponent implements OnInit {
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
 						this.currentArtist = artist;
-						// console.log('this.currentArtist',this.currentArtist);
 						this.hasError.val = false;
 						this.isFetching.val = false;
 					}, e => {
@@ -41,7 +40,11 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit() {
-  	}
+		// Focus on input
+		setTimeout(() => {
+			document.getElementById('artist-search').focus();
+		}, 0);
+  }
 
 }
 

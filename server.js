@@ -48,4 +48,4 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(config.PORT, () => console.log(`API running on localhost:${config.PORT}`));
+server.listen(config.PORT, () => console.log(`App running on localhost:${config.PORT}`));

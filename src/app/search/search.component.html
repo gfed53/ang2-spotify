@@ -2,7 +2,7 @@
 	<p class="p-lg">Search for an artist. Then, grab a related artist with the popularity of your choice.</p>
 	<div class="input-container">
 		<form #f="ngForm" (ngSubmit)="searchArtist(f)">
-			<input name="search" ngModel #search="ngModel">
+			<input id="artist-search" name="search" ngModel #search="ngModel">
 			<button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 		</form>
 	</div>
