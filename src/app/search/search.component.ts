@@ -33,6 +33,10 @@ export class SearchComponent implements OnInit {
 						this.currentArtist = artist;
 						this.hasError.val = false;
 						this.isFetching.val = false;
+						setTimeout(() => { 
+							console.log(document.getElementById('btn-go-mainstream'));
+							document.getElementById('btn-go-mainstream').focus();
+							}, 0);
 					}, e => {
 						this.hasError.val = true;
 					});
@@ -41,9 +45,7 @@ export class SearchComponent implements OnInit {
 
 	ngOnInit() {
 		// Focus on input
-		setTimeout(() => {
-			document.getElementById('artist-search').focus();
-		}, 0);
+		setTimeout(() => { document.getElementById('artist-search').focus();	}, 0);
   }
 
 }

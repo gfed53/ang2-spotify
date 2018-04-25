@@ -11,14 +11,14 @@ export class ScrollDirective implements OnInit, AfterContentInit, AfterViewInit 
 	constructor(private _elRef:ElementRef) {}
 
 	ngOnInit(): void {
-		console.log('after on init fired');
-		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+		// console.log('after on init fired');
+		// console.log('this._elRef.nativeElement',this._elRef.nativeElement);
 		this.myScroll();
 	}
 
 	ngAfterContentInit(): void {
-		console.log('after content init fired');
-		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+		// console.log('after content init fired');
+		// console.log('this._elRef.nativeElement',this._elRef.nativeElement);
 	}
 
 	// ngAfterContentChecked(): void {
@@ -27,8 +27,8 @@ export class ScrollDirective implements OnInit, AfterContentInit, AfterViewInit 
 	// }
 
 	ngAfterViewInit(): void {
-		console.log('after view init fired');
-		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+		// console.log('after view init fired');
+		// console.log('this._elRef.nativeElement',this._elRef.nativeElement);
 		
 	}
 
@@ -38,16 +38,16 @@ export class ScrollDirective implements OnInit, AfterContentInit, AfterViewInit 
 	// }
 
 	myScroll(): void {
-		console.log('this._elRef.nativeElement',this._elRef.nativeElement);
+		// console.log('this._elRef.nativeElement',this._elRef.nativeElement);
 
 		//Get
 		let elementOffset = $(this._elRef.nativeElement).offset().top;
 		
-		console.log('elementOffset',elementOffset);
+		// console.log('elementOffset',elementOffset);
 
 		//Set
 		$(window).scrollTop(elementOffset);
-		console.log('done');
+		// console.log('done');
 		// console.log('$(document).scrollTop():',$(window).scrollTop());
 	}
 }

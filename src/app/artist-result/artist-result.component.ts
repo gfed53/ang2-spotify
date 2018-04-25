@@ -1,4 +1,4 @@
-import { Component, Input, Output, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, ViewChild } from '@angular/core';
 
 import {
   trigger,
@@ -45,6 +45,15 @@ export class ArtistResultComponent {
     private _elRef: ElementRef
 		){}
 
+  ngOnInit() {
+    // Focus on button
+    // setTimeout(() => { 
+    //   console.log(document.getElementById('btn-go-mainstream'));
+    //   document.getElementById('btn-go-mainstream').focus();
+      
+    //   }, 0);
+  }
+
 	getRelated(id: string, type: string): void {
 		this.isFetching.val = true;
 		this._getRelatedService.getRelated(id, type)
@@ -52,7 +61,14 @@ export class ArtistResultComponent {
 						this.currentArtist = artist;
 						// console.log('this.currentArtist changed, now..',this.currentArtist);
 						this.hasError.val = false;
-						this.isFetching.val = false;
+            this.isFetching.val = false;
+            
+            // Focus on button
+            setTimeout(() => { 
+              console.log(document.getElementById('btn-go-mainstream'));
+              document.getElementById('btn-go-mainstream').focus();
+              
+            	}, 0);
 					}, e => {
 						this.hasError.val = true;
 					});
