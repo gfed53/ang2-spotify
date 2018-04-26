@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-Here is a [live demo version](http://ang2-spotify.herokuapp.com) that you can jump right into and use. If you want to create your own build and/or learn more about the process, continue reading.
+Here is a [live demo version](http://as-cycle-123.herokuapp.com/) that you can jump right into and use. If you want to create your own build and/or learn more about the process, continue reading.
 
 ## Introduction
 
@@ -29,6 +29,4 @@ Note that some artists may not even have related mainstream or underground artis
 ## The Process
 
 Throughout the app's development, I gained experience with Angular 2/4 and TypeScript. This app was originally developed with Angular 1.x, so through the migration to the next evolution of Angular I learned more about the vastly different architecture based around Web Components, as well as static typing which is one of the many features TypeScript provides, and more.
-
-The project is still in development, so I plan on adding some new features and UX/UI tweaks in the near future.
 
