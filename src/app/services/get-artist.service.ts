@@ -32,7 +32,6 @@ export class GetArtistService {
 		return this._http.get(url, options)
 			.map(res => res.json())
 			.map(data => {
-				console.log('data',data);
 				return data.artists.items[0];
 			})
 			.map(artist => {
