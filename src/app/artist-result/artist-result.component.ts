@@ -18,7 +18,7 @@ import { Artist } from '../types/artist';
   selector: 'artist-result',
   templateUrl: './artist-result.component.html',
   styleUrls: ['./artist-result.component.sass'],
-  //flyInOut animation to be used on artist-result-container
+  // flyInOut animation to be used on artist-result-container
   animations: [
   trigger('flyInOut', [
     state('in', style({transform: 'translateX(0)'})),
@@ -38,41 +38,26 @@ export class ArtistResultComponent {
 	@Input() isFetching: {val: boolean};
 	@Input() hasError: {val: boolean};
 
-  // @ViewChild('resultContainer') private resultContainer: ElementRef;
-
 	constructor(
 		private _getRelatedService: GetRelatedService,
     private _elRef: ElementRef
 		){}
 
   ngOnInit() {
-    // Focus on button
-    // setTimeout(() => { 
-    //   console.log(document.getElementById('btn-go-mainstream'));
-    //   document.getElementById('btn-go-mainstream').focus();
-      
-    //   }, 0);
   }
 
 	getRelated(id: string, type: string): void {
 		this.isFetching.val = true;
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
-						this.currentArtist = artist;
-						// console.log('this.currentArtist changed, now..',this.currentArtist);
-						this.hasError.val = false;
-            this.isFetching.val = false;
-            
-            // Focus on button
-            setTimeout(() => { 
-              console.log(document.getElementById('btn-go-mainstream'));
-              document.getElementById('btn-go-mainstream').focus();
-              
-            	}, 0);
-					}, e => {
-						this.hasError.val = true;
-					});
+      this.currentArtist = artist;
+      this.hasError.val = false;
+      this.isFetching.val = false;
+      
+      // Focus on button
+      setTimeout(() => { document.getElementById('btn-go-mainstream').focus();	}, 0);
+    }, e => {
+      this.hasError.val = true;
+    });
 	}
-
-
 }

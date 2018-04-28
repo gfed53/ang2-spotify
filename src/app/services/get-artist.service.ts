@@ -20,7 +20,6 @@ export class GetArtistService {
 
 	getArtist(q: string): any {
 		let token = this._getAuthTokenService.token;
-		// console.log('token!',token);
 		let url = 'https://api.spotify.com/v1/search';
 		let params = new URLSearchParams();
 		params.append('q', q);
@@ -29,14 +28,11 @@ export class GetArtistService {
 		let headers = new Headers({'Authorization': `Bearer ${token}`});
 
 		let options = new RequestOptions({headers, params});
-		// console.log('params',params);
-		// console.log('headers',headers);
-		// console.log('options',options);
 
 		return this._http.get(url, options)
 			.map(res => res.json())
 			.map(data => {
-				// console.log('before filtering',data.artists.items[0]);
+				console.log('data',data);
 				return data.artists.items[0];
 			})
 			.map(artist => {

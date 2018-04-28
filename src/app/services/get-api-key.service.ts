@@ -13,11 +13,9 @@ export class GetApiKeyService {
 	constructor(private http: Http) {}
 
 	getKey(callback: (data) => void) {
-		// console.log('in client id service');
 		this.http.get('/api/access')
 			.map((res) => res.json())
 			.subscribe(obj => {
-					// console.log('after subscribe, what is the obj?:',obj);
 					callback(obj);
 				});
 		}

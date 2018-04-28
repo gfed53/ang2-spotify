@@ -16,25 +16,17 @@ export class GetRelatedService {
 
 	getRelated(id: string, type: string): any {
 		let token = this._getAuthTokenService.token;
-		// console.log('token!',token);
-
 		let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
-
 		let headers = new Headers({'Authorization': `Bearer ${token}`});
 		let options = new RequestOptions({headers});
-
-		// console.log('url',url);
-		// console.log('options',options);
 
 		return this._http.get(url, options)
 			.map(res => res.json())
 			.map(data => {
-				// console.log('before filtering, data:',data);
-				//Just for now..
 				return data.artists;
 			})
 			.map(artists => {
-				//Here's where we could filter out by type: mainstream, hipster exc. Use separate function.
+				// Here's where we filter out by type: mainstream, hipster exc.
 				if(type === 'mainstream'){
 					return this.getPopular(artists);
 				}
@@ -56,8 +48,6 @@ export class GetRelatedService {
 					popularity: artist.popularity
 				}
 			});
-
-
 	}
 
 	//Filter functions
@@ -72,9 +62,4 @@ export class GetRelatedService {
 	getRandom(a: any[]): any {
 		return a[Math.floor(Math.random()*a.length)];
 	}
-
-
-
-
-
 }

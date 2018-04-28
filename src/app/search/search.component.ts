@@ -23,24 +23,19 @@ export class SearchComponent implements OnInit {
 	constructor(
 		private _getArtistService: GetArtistService,
 		private _getAuthTokenService: GetAuthTokenService
-		){}
-
+	){}
 
 	searchArtist(f: NgForm): void {
 		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
-						this.currentArtist = artist;
-						this.hasError.val = false;
-						this.isFetching.val = false;
-						setTimeout(() => { 
-							console.log(document.getElementById('btn-go-mainstream'));
-							document.getElementById('btn-go-mainstream').focus();
-							}, 0);
-					}, e => {
-						this.hasError.val = true;
-					});
-
+			this.currentArtist = artist;
+			this.hasError.val = false;
+			this.isFetching.val = false;
+			setTimeout(() => { document.getElementById('btn-go-mainstream').focus();	}, 0);
+		}, e => {
+			this.hasError.val = true;
+		});
 	}
 
 	ngOnInit() {
