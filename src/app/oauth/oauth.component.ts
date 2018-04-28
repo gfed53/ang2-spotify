@@ -18,6 +18,7 @@ export class OAuthComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		// this._getAuthTokenService.autoRedirect();
+		// Focus on button
+		setTimeout(() => { document.getElementById('btn-get-token').focus(); }, 0);
 	}
 }
