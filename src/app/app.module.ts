@@ -1,13 +1,11 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 // Components
 import { AppComponent } from './app.component';
@@ -21,6 +19,7 @@ import { GetArtistService } from './services/get-artist.service';
 import { GetRelatedService } from './services/get-related.service';
 import { GetAuthTokenService } from './services/get-auth-token.service';
 import { GetApiKeyService } from './services/get-api-key.service';
+import { SmoothScrollService } from './services/smooth-scroll.service';
 
 // Directives
 import { ScrollDirective } from './directives/scroll.directive';
@@ -44,13 +43,15 @@ import { NoTokenGuard } from './guards/no-token.guard';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng2PageScrollModule
   ],
   providers: [
 	GetApiKeyService,
 	GetAuthTokenService,
 	GetArtistService,
-	GetRelatedService,
+  GetRelatedService,
+  SmoothScrollService,
 	HasTokenGuard,
 	NoTokenGuard
   ],
