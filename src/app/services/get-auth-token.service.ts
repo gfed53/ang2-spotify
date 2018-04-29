@@ -24,7 +24,7 @@ export class GetAuthTokenService {
 		return typeof this.cID === 'string';
 	}
 
-	//Checks within localStorage
+	// Checks within localStorage
 	needsToken(_authObj?: any): boolean {
 		let authObj = _authObj ? _authObj : JSON.parse(localStorage.getItem('spotOAuth'));
 		return authObj === null || authObj === undefined || this.isExpired(authObj);
@@ -35,9 +35,9 @@ export class GetAuthTokenService {
 		return new Promise((resolve,reject) => {
 			let authObj: any = JSON.parse(localStorage.getItem('spotOAuth'));
 
-			//Get key
+			// Get key
 			this._getApiKeyService.getKey((obj) => {
-				//Keep ref to client ID
+				// Keep ref to client ID
 				this.cID = obj.spotID;
 
 				// get() returns boolean to determine state load, also retrieving token in service if it can.
@@ -51,6 +51,12 @@ export class GetAuthTokenService {
 		let redirect_uri = 'http://localhost:3000/oauth-callback';
 		window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + this.cID + '&response_type=token&redirect_uri='+redirect_uri;
 	}
+
+	/* 
+	FOR REDIRECT URI:
+		dev: http://localhost:3000/oauth-callback
+		prod: http://as-cycle-123.herokuapp.com/oauth-callback
+	*/
 
 
 	// Checks if authObj.time_stamp + authObj.expires_in > Date.now();
