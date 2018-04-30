@@ -4,7 +4,7 @@
 <section *ngIf="hasError.val">
 	<p class="p-lg">Sorry, an error occured..</p>
 </section>
-<section spScroll class="artist-result-container" *ngIf="currentArtist && !isFetching.val && !hasError.val" [@flyInOut]="currentArtist">
+<section class="artist-result-container" *ngIf="currentArtist && !isFetching.val && !hasError.val" [@flyInOut]="currentArtist">
 	<h1>{{ currentArtist.name }}</h1>
 	<img src="{{ currentArtist.imageURL }}" alt="">
 	<section>
