@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, ElementRef, ViewChild } from '@angular/core';
+import { PageScrollConfig } from 'ng2-page-scroll';
 
 import {
   trigger,
@@ -10,6 +11,10 @@ import {
 
 // Services
 import { GetRelatedService } from '../services/get-related.service';
+import { SmoothScrollService } from '../services/smooth-scroll.service';
+
+
+
 
 // Types
 import { Artist } from '../types/artist';
@@ -39,9 +44,13 @@ export class ArtistResultComponent {
 	@Input() hasError: {val: boolean};
 
 	constructor(
-		private _getRelatedService: GetRelatedService,
+    private _getRelatedService: GetRelatedService,
+    private _smoothScrollService: SmoothScrollService,
     private _elRef: ElementRef
-		){}
+		){
+      PageScrollConfig.defaultDuration = this._smoothScrollService.duration;
+      PageScrollConfig.defaultEasingLogic = this._smoothScrollService.easingLogic;
+    }
 
   ngOnInit() {
   }
@@ -55,7 +64,10 @@ export class ArtistResultComponent {
       this.isFetching.val = false;
       
       // Focus on button
-      setTimeout(() => { document.getElementById('btn-go-mainstream').focus();	}, 0);
+      setTimeout(() => {
+        this._smoothScrollService.scrollTo('.artist-result-container');
+        document.getElementById('btn-go-mainstream').focus();
+      }, 0);
     }, e => {
       this.hasError.val = true;
     });
