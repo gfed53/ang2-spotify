@@ -1,9 +1,10 @@
 <section>
 	<p class="p-lg">Search for an artist. Then, grab a related artist with the popularity of your choice.</p>
 	<div class="input-container">
-		<form #f="ngForm" (ngSubmit)="searchArtist(f)">
+		<form #f="ngForm" (ngSubmit)="submit(f)">
 			<input id="artist-search" name="search" ngModel #search="ngModel">
 			<button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			<button type="button" (click)="findNextResult(f)">Not the right match?</button>
 		</form>
 	</div>
 	<artist-result [currentArtist]="currentArtist" [isFetching]="isFetching" [(hasError)]="hasError"></artist-result>

@@ -15,6 +15,7 @@ import { Artist } from '../types/artist';
 export class SearchComponent implements OnInit {
 	
 	currentArtist: Artist;
+	searchIndex: number = 0;
 	isFetching = {val: false};
 	hasError = {val: false};
 
@@ -26,9 +27,20 @@ export class SearchComponent implements OnInit {
     PageScrollConfig.defaultEasingLogic = this._smoothScrollService.easingLogic;
 	}
 
-	searchArtist(f: NgForm): void {
+	submit(f): void {
+		// New search, reset index to 0
+		this.searchIndex = 0;
+		this.searchArtist(f, this.searchIndex);
+	}
+
+	findNextResult(f: NgForm): void {
+		this.searchIndex++;
+		this.searchArtist(f, this.searchIndex);
+	}
+
+	searchArtist(f: NgForm, searchIndex: number): void {
 		this.isFetching.val = true;
-		this._getArtistService.getArtist(f.value.search)
+		this._getArtistService.getArtist(f.value.search, searchIndex)
 		.subscribe(artist => {
 			this.currentArtist = artist;
 			this.hasError.val = false;

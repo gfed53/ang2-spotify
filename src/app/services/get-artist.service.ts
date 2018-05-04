@@ -18,7 +18,7 @@ import { GetAuthTokenService } from './get-auth-token.service';
 export class GetArtistService {
 	constructor(private _http: Http, private _getAuthTokenService: GetAuthTokenService){}
 
-	getArtist(q: string): any {
+	getArtist(q: string, searchIndex: number = 0): any {
 		let token = this._getAuthTokenService.token;
 		let url = 'https://api.spotify.com/v1/search';
 		let params = new URLSearchParams();
@@ -32,7 +32,7 @@ export class GetArtistService {
 		return this._http.get(url, options)
 			.map(res => res.json())
 			.map(data => {
-				return data.artists.items[0];
+				return data.artists.items[searchIndex];
 			})
 			.map(artist => {
 				let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
