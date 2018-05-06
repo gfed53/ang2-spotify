@@ -5,6 +5,21 @@
 	display: inline-block
 
 form:after
+	// clear: both
+	// content: ''
+	// display: table
+
+
+#form-main
+	display: flex
+	flex-flow: row wrap
+	justify-content: space-around
+
+
+.container-form-inner
+	margin: 0.25em
+
+.container-form-inner:after
 	clear: both
 	content: ''
 	display: table
@@ -31,6 +46,19 @@ input[name="search"]
 	border-radius: 0 5px 5px 0
 	cursor: pointer
 
+.btn-next-match
+	-webkit-appearance: none
+	-moz-appearance: none
+	margin: 0 1em
+	background: $spotify-green
+	color: white
+	// border: 2px solid $spotify-green
+	height: 37px
+	font-size: 1em
+	border-radius: 5px
+	cursor: pointer
+	font-size: 
+		
 
 @media only screen and ($tablet)
 	input[name="search"]
