@@ -8,9 +8,9 @@
 	<h1>{{ currentArtist.name }}</h1>
 	<img src="{{ currentArtist.imageURL }}" alt="">
 	<section>
-		<button id="btn-go-mainstream" (click)="getRelated(currentArtist.id, 'mainstream')">Go Mainstream <i class="fa fa-angle-right"></i></button>
-		<button id="btn-go-hipster" (click)="getRelated(currentArtist.id, 'hipster')">Go Hipster <i class="fa fa-angle-right"></i></button>
-		<button id="btn-go-whatever" (click)="getRelated(currentArtist.id, 'whatever')">Go Whatever <i class="fa fa-angle-right"></i></button>
-		<a id="link-spotify-page" target="_blank" href="{{ currentArtist.url }}">Check them out here!</a>
+		<button class="my-btn" id="btn-go-mainstream" (click)="getRelated(currentArtist.id, 'mainstream')">Go Mainstream <i class="fa fa-angle-right"></i></button>
+		<button class="my-btn" id="btn-go-hipster" (click)="getRelated(currentArtist.id, 'hipster')">Go Hipster <i class="fa fa-angle-right"></i></button>
+		<button class="my-btn" id="btn-go-whatever" (click)="getRelated(currentArtist.id, 'whatever')">Go Whatever <i class="fa fa-angle-right"></i></button>
+		<a class="my-btn" id="link-spotify-page" target="_blank" href="{{ currentArtist.url }}">Check them out here!</a>
 	</section>
 </section>
