@@ -16,6 +16,7 @@
                     }
                 };
                 localStorage.setItem("spotOAuth", JSON.stringify(spotOAuth));
+                // Will be different for production version. See ./server/config.js for URI info.
                 window.location.href = "http://localhost:3000";
             } else {
                 alert("Problem authenticating");
@@ -25,7 +26,5 @@
     <body>Redirecting...</body>
 </html>
 
-<!-- FOR window.location.href: -->
-    <!-- dev: http://localhost:3000 -->
-    <!-- prod: http://as-cycle-123.herokuapp.com -->
+
 

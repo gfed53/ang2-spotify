@@ -48,16 +48,10 @@ export class GetAuthTokenService {
 
 	auth(): void {
 		let url = 'https://accounts.spotify.com/authorize';
+		// Will be different for production version. See ./server/config.js for URI info.
 		let redirect_uri = 'http://localhost:3000/oauth-callback';
 		window.location.href = 'https://accounts.spotify.com/authorize?client_id=' + this.cID + '&response_type=token&redirect_uri='+redirect_uri;
 	}
-
-	/* 
-	FOR REDIRECT URI:
-		dev: http://localhost:3000/oauth-callback
-		prod: http://as-cycle-123.herokuapp.com/oauth-callback
-	*/
-
 
 	// Checks if authObj.time_stamp + authObj.expires_in > Date.now();
 	isExpired(authObj: any): boolean {
