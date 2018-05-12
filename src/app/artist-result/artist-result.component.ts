@@ -65,7 +65,7 @@ export class ArtistResultComponent {
       
       // Focus on button
       setTimeout(() => {
-        this._smoothScrollService.scrollTo('.artist-result-container');
+        this._smoothScrollService.scrollTo('.btn-group-artist-result');
         document.getElementById('btn-go-mainstream').focus();
       }, 0);
     }, e => {
