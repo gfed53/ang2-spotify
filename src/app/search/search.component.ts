@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
 			this.hasError.val = false;
 			this.isFetching.val = false;
 			setTimeout(() => {
-				this._smoothScrollService.scrollTo('.btn-group-artist-result'); 
+				this._smoothScrollService.scrollTo('#scroll-anchor'); 
 				document.getElementById('btn-go-mainstream').focus();
 				}, 0);
 		}, e => {
