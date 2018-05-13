@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
 			setTimeout(() => {
 				this._smoothScrollService.scrollTo('#scroll-anchor'); 
 				document.getElementById('btn-go-mainstream').focus();
-				}, 0);
+				}, 200);
 		}, e => {
 			this.hasError.val = true;
 		});
