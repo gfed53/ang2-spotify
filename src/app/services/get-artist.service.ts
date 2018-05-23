@@ -2,6 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,22 +17,35 @@ import { GetAuthTokenService } from './get-auth-token.service';
 
 @Injectable()
 export class GetArtistService {
-	constructor(private _http: Http, private _getAuthTokenService: GetAuthTokenService){}
+	constructor(private _http: HttpClient, private _getAuthTokenService: GetAuthTokenService){}
 
 	getArtist(q: string, searchIndex: number = 0): any {
 		let token = this._getAuthTokenService.token;
 		let url = 'https://api.spotify.com/v1/search';
-		let params = new URLSearchParams();
-		params.append('q', q);
-		params.append('type', 'artist');
+		// let params = new URLSearchParams();
 
-		let headers = new Headers({'Authorization': `Bearer ${token}`});
+		let params = new HttpParams()
+										.set('q', q)
+										.set('type', 'artist');
 
-		let options = new RequestOptions({headers, params});
+		// let headers = new Headers({'Authorization': `Bearer ${token}`});
+		// let headers = new HttpHeaders({'Authorization': `Bearer ${token}`});
+		let headers = new HttpHeaders()
+											.set('Authorization', `Bearer ${token}`);
 
-		return this._http.get(url, options)
-			.map(res => res.json())
+		// let options = new RequestOptions({headers, params});
+
+		const httpOptions = {
+			headers,
+			params
+		}
+
+		console.log('httpOptions',httpOptions);
+
+		return this._http.get<any>(url, httpOptions)
+			// .map(res => res.json())
 			.map(data => {
+				console.log('data',data);
 				return data.artists.items[searchIndex];
 			})
 			.map(artist => {
