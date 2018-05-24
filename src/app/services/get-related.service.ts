@@ -3,6 +3,8 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers } from '@angular/http';
 
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -12,16 +14,20 @@ import { GetAuthTokenService } from './get-auth-token.service';
 
 @Injectable()
 export class GetRelatedService {
-	constructor(private _http: Http, private _getAuthTokenService: GetAuthTokenService){}
+	constructor(private _http: HttpClient, private _getAuthTokenService: GetAuthTokenService){}
 
 	getRelated(id: string, type: string): any {
-		let token = this._getAuthTokenService.token;
-		let url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
-		let headers = new Headers({'Authorization': `Bearer ${token}`});
-		let options = new RequestOptions({headers});
+		const token = this._getAuthTokenService.token;
+		const url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
+		const headers = new HttpHeaders()
+											.set('Authorization', `Bearer ${token}`);
 
-		return this._http.get(url, options)
-			.map(res => res.json())
+		const httpOptions = {
+			headers
+		}
+
+		return this._http.get<any>(url, httpOptions)
+			// .map(res => res.json())
 			.map(data => {
 				return data.artists;
 			})

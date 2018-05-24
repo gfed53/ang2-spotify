@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +16,6 @@ export class GetApiKeyService {
 
 	getKey(callback: (data) => void) {
 		this.http.get('/api/access')
-			// .map((res) => res.json())
 			.subscribe(obj => {
 					callback(obj);
 				});

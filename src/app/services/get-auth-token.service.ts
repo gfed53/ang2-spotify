@@ -1,7 +1,8 @@
 // Grabs OAuth2 token from Spotify using Spotify API and client ID
 
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
+// import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -11,7 +12,7 @@ import { GetApiKeyService } from '../services/get-api-key.service';
 
 @Injectable()
 export class GetAuthTokenService {
-	constructor(private _http: Http, private _router: Router, private _getApiKeyService: GetApiKeyService){}
+	constructor(private _router: Router, private _getApiKeyService: GetApiKeyService){}
 
 	cID: string;
 	token: string;
