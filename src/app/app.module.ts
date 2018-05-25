@@ -3,11 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-// update
 import { HttpClientModule } from '@angular/common/http';
-//
-
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
@@ -40,16 +36,12 @@ import { NoTokenGuard } from './guards/no-token.guard';
     SearchComponent,
     ArtistResultComponent,
     OAuthComponent,
-    CheckAuthComponent,
-    ScrollDirective
+    CheckAuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    // update
     HttpClientModule,
-    //
     AppRoutingModule,
     BrowserAnimationsModule,
     Ng2PageScrollModule

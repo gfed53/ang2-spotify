@@ -1,7 +1,6 @@
 // Grabs related artist using Spotify's API related search endpoint and provided ID
 
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers } from '@angular/http';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
@@ -27,7 +26,6 @@ export class GetRelatedService {
 		}
 
 		return this._http.get<any>(url, httpOptions)
-			// .map(res => res.json())
 			.map(data => {
 				return data.artists;
 			})

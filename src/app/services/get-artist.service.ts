@@ -1,15 +1,9 @@
 // Grabs artist using Spotify's API search endpoint and provided search query
 
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Request, RequestMethod, URLSearchParams, Headers } from '@angular/http';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
-//test
-import { SAMPLE } from '../sample.mock';
-import { Mock } from '../mock';
 
 import { Artist } from '../types/artist';
 
