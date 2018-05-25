@@ -17,10 +17,10 @@ export class GetArtistService {
 		const token = this._getAuthTokenService.token;
 		const url = 'https://api.spotify.com/v1/search';
 		const params = new HttpParams()
-										.set('q', q)
-										.set('type', 'artist');
+												.set('q', q)
+												.set('type', 'artist');
 		const headers = new HttpHeaders()
-											.set('Authorization', `Bearer ${token}`);
+												.set('Authorization', `Bearer ${token}`);
 		const httpOptions = {
 			headers,
 			params
@@ -28,7 +28,13 @@ export class GetArtistService {
 
 		return this._http.get<any>(url, httpOptions)
 			.map(data => {
-				return data.artists.items[searchIndex];
+				/* 
+					TODO: If there's a case where the exact match isn't actually the right one (i.e. Eagles vs. The Eagles), there will be a different course of action.
+				*/
+				
+				// console.log('data.artists',data.artists);
+				let filtered = this.getExactMatches(data.artists.items, q);
+				return filtered[searchIndex];
 			})
 			.map(artist => {
 				let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
@@ -40,6 +46,16 @@ export class GetArtistService {
 					popularity: artist.popularity
 				}
 			});
+	}
+
+	getExactMatches(results,q){
+		let testStr = `^${q.toLowerCase()}$`;
+		let regTest = new RegExp(testStr,'g');
+
+		return results.filter((result) => {
+			let name = result.name.toLowerCase();
+			return regTest.test(name);
+		})
 	}
 
 }
