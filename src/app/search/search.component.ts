@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PageScrollConfig } from 'ng2-page-scroll';
 
+// Services
 import { GetArtistService } from '../services/get-artist.service';
-import { SmoothScrollService } from '../services/smooth-scroll.service';
 
+// Types
 import { Artist } from '../types/artist';
 
 @Component({
@@ -20,12 +21,8 @@ export class SearchComponent implements OnInit {
 	hasError = {val: false};
 
 	constructor(
-		private _getArtistService: GetArtistService,
-		private _smoothScrollService: SmoothScrollService
-	){
-		PageScrollConfig.defaultDuration = this._smoothScrollService.duration;
-    PageScrollConfig.defaultEasingLogic = this._smoothScrollService.easingLogic;
-	}
+		private _getArtistService: GetArtistService
+	){}
 
 	submit(f): void {
 		// New search, reset index to 0
@@ -45,10 +42,6 @@ export class SearchComponent implements OnInit {
 			this.currentArtist = artist;
 			this.hasError.val = false;
 			this.isFetching.val = false;
-			setTimeout(() => {
-				this._smoothScrollService.scrollTo('#scroll-anchor'); 
-				document.getElementById('btn-go-mainstream').focus();
-				}, 200);
 		}, e => {
 			this.hasError.val = true;
 		});

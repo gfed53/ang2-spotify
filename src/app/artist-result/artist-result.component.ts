@@ -13,9 +13,6 @@ import {
 import { GetRelatedService } from '../services/get-related.service';
 import { SmoothScrollService } from '../services/smooth-scroll.service';
 
-
-
-
 // Types
 import { Artist } from '../types/artist';
 
@@ -62,14 +59,13 @@ export class ArtistResultComponent {
       this.currentArtist = artist;
       this.hasError.val = false;
       this.isFetching.val = false;
-      
-      // Focus on button
-      setTimeout(() => {
-        this._smoothScrollService.scrollTo('#scroll-anchor');
-        document.getElementById('btn-go-mainstream').focus();
-      }, 200);
     }, e => {
       this.hasError.val = true;
     });
+  }
+  
+  scrollToArtist(): void {
+		this._smoothScrollService.scrollTo('#scroll-anchor'); 
+		document.getElementById('btn-go-mainstream').focus();
 	}
 }
