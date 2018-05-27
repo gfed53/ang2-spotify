@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { ModalDialogModule } from 'ngx-modal-dialog';
 
 // Components
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { ArtistResultComponent } from './artist-result/artist-result.component';
 import { OAuthComponent } from './oauth/oauth.component';
 import { CheckAuthComponent } from './check-auth/check-auth.component';
+import { MyModalComponent } from './my-modal/my-modal.component';
 
 // Services
 import { GetArtistService } from './services/get-artist.service';
@@ -30,13 +32,18 @@ import { HasTokenGuard } from './guards/has-token.guard';
 import { NoTokenGuard } from './guards/no-token.guard';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ArtistResultComponent,
     OAuthComponent,
-    CheckAuthComponent
+    CheckAuthComponent,
+    MyModalComponent
+  ],
+  entryComponents: [
+    MyModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,8 @@ import { NoTokenGuard } from './guards/no-token.guard';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    ModalDialogModule.forRoot()
   ],
   providers: [
 	GetApiKeyService,
