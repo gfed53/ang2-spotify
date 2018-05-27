@@ -35,6 +35,8 @@ export class SearchComponent implements OnInit {
 		this.searchArtist(f, this.searchIndex);
 	}
 
+	
+
 	searchArtist(f: NgForm, searchIndex: number): void {
 		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search, searchIndex)

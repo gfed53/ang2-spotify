@@ -1,4 +1,4 @@
-# App using Angular 2/4 and the Spotify API
+# App using Angular 2/5 and the Spotify API
 
 ## Live Demo
 
