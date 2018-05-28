@@ -8,10 +8,15 @@ import 'rxjs/add/operator/map';
 import { Artist } from '../types/artist';
 
 import { GetAuthTokenService } from './get-auth-token.service';
+import { BaseArtistService } from './base-artist.service';
 
 @Injectable()
 export class GetArtistService {
-	constructor(private _http: HttpClient, private _getAuthTokenService: GetAuthTokenService){}
+	constructor(
+		private _http: HttpClient, 
+		private _getAuthTokenService: GetAuthTokenService,
+		private _baseArtistService: BaseArtistService
+	){}
 
 	getArtist(q: string, searchIndex: number = 0): any {
 		const token = this._getAuthTokenService.token;

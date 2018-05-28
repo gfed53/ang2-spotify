@@ -23,6 +23,8 @@ import { GetRelatedService } from './services/get-related.service';
 import { GetAuthTokenService } from './services/get-auth-token.service';
 import { GetApiKeyService } from './services/get-api-key.service';
 import { SmoothScrollService } from './services/smooth-scroll.service';
+import { BaseArtistService } from './services/base-artist.service';
+
 
 // Directives
 import { ScrollDirective } from './directives/scroll.directive';
@@ -57,9 +59,10 @@ import { NoTokenGuard } from './guards/no-token.guard';
   providers: [
 	GetApiKeyService,
 	GetAuthTokenService,
-	GetArtistService,
+  GetArtistService,
   GetRelatedService,
   SmoothScrollService,
+  BaseArtistService,
 	HasTokenGuard,
 	NoTokenGuard
   ],

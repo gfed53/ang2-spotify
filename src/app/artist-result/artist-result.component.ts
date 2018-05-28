@@ -12,6 +12,7 @@ import {
 // Services
 import { GetRelatedService } from '../services/get-related.service';
 import { SmoothScrollService } from '../services/smooth-scroll.service';
+import { BaseArtistService } from '../services/base-artist.service';
 
 // Types
 import { Artist } from '../types/artist';
@@ -43,13 +44,18 @@ export class ArtistResultComponent {
 	constructor(
     private _getRelatedService: GetRelatedService,
     private _smoothScrollService: SmoothScrollService,
-    private _elRef: ElementRef
+    private _elRef: ElementRef,
+    private _baseArtistService: BaseArtistService
 		){
       PageScrollConfig.defaultDuration = this._smoothScrollService.duration;
       PageScrollConfig.defaultEasingLogic = this._smoothScrollService.easingLogic;
     }
 
   ngOnInit() {
+    this._baseArtistService.baseArtist$
+    .subscribe((artist) => {
+      console.log('artist',artist);
+    });
   }
 
 	getRelated(id: string, type: string): void {
@@ -57,6 +63,8 @@ export class ArtistResultComponent {
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
       this.currentArtist = artist;
+      // New
+			this._baseArtistService.update(artist);
       this.hasError.val = false;
       this.isFetching.val = false;
     }, e => {
