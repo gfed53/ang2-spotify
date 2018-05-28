@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-// import { Http } from '@angular/http';
-// import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable.js';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
@@ -19,6 +16,6 @@ export class BaseArtistService {
 
   update(artist: Artist): void {
     this.baseArtistSource.next(artist);
-    console.log('this.baseArtistSource',this.baseArtistSource);
+    // console.log('this.baseArtistSource',this.baseArtistSource);
   }
 }

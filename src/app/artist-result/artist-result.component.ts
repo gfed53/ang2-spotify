@@ -37,9 +37,10 @@ import { Artist } from '../types/artist';
 })
 
 export class ArtistResultComponent {
-	@Input() currentArtist: Artist;
 	@Input() isFetching: {val: boolean};
-	@Input() hasError: {val: boolean};
+  @Input() hasError: {val: boolean};
+  
+  currentArtist: Artist;
 
 	constructor(
     private _getRelatedService: GetRelatedService,
@@ -54,7 +55,8 @@ export class ArtistResultComponent {
   ngOnInit() {
     this._baseArtistService.baseArtist$
     .subscribe((artist) => {
-      console.log('artist',artist);
+      // console.log('artist',artist);
+      this.currentArtist = artist;
     });
   }
 

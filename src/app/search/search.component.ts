@@ -16,7 +16,7 @@ import { Artist } from '../types/artist';
 })
 export class SearchComponent implements OnInit {
 	
-	currentArtist: Artist;
+	// currentArtist: Artist;
 	searchIndex: number = 0;
 	isFetching = {val: false};
 	hasError = {val: false};
@@ -43,8 +43,7 @@ export class SearchComponent implements OnInit {
 		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search, searchIndex)
 		.subscribe(artist => {
-			this.currentArtist = artist;
-			// New
+			// this.currentArtist = artist;
 			this._baseArtistService.update(artist);
 			this.hasError.val = false;
 			this.isFetching.val = false;

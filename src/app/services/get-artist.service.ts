@@ -63,4 +63,6 @@ export class GetArtistService {
 		})
 	}
 
+	// If we plan on saving the other potential results, we should probably create a method that transforms the artist objects into our own Artist object.
+
 }
