@@ -5,6 +5,7 @@ import { PageScrollConfig } from 'ng2-page-scroll';
 // Services
 import { GetArtistService } from '../services/get-artist.service';
 import { BaseArtistService } from '../services/base-artist.service';
+import { BaseArtistResultsService } from '../services/base-artist-results.service';
 
 // Types
 import { Artist } from '../types/artist';
@@ -17,13 +18,15 @@ import { Artist } from '../types/artist';
 export class SearchComponent implements OnInit {
 	
 	// currentArtist: Artist;
+	currentResults: Artist[];
 	searchIndex: number = 0;
 	isFetching = {val: false};
 	hasError = {val: false};
 
 	constructor(
 		private _getArtistService: GetArtistService,
-		private _baseArtistService: BaseArtistService
+		private _baseArtistService: BaseArtistService,
+		private _baseArtistResultsService: BaseArtistResultsService
 	){}
 
 	submit(f): void {
@@ -53,6 +56,13 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
+		this._baseArtistResultsService.baseArtistResults$
+		.subscribe((results) => {
+			this.currentResults = results;
+			console.log('this.currentResults',this.currentResults);
+		})
+
 		// Focus on input
 		setTimeout(() => { document.getElementById('artist-search').focus();	}, 0);
   }

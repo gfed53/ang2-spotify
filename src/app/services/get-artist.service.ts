@@ -9,13 +9,15 @@ import { Artist } from '../types/artist';
 
 import { GetAuthTokenService } from './get-auth-token.service';
 import { BaseArtistService } from './base-artist.service';
+import { BaseArtistResultsService } from './base-artist-results.service';
 
 @Injectable()
 export class GetArtistService {
 	constructor(
 		private _http: HttpClient, 
 		private _getAuthTokenService: GetAuthTokenService,
-		private _baseArtistService: BaseArtistService
+		private _baseArtistService: BaseArtistService,
+		private _baseArtistResultsService: BaseArtistResultsService
 	){}
 
 	getArtist(q: string, searchIndex: number = 0): any {
@@ -36,10 +38,17 @@ export class GetArtistService {
 				/* 
 					TODO: If there's a case where the exact match isn't actually the right one (i.e. Eagles vs. The Eagles), there will be a different course of action.
 				*/
+
+				const results = data.artists.items;
+
+				// We will store all of the initial results in observable for later in case the artist we derive is not what the user wanted.
+				this._baseArtistResultsService.update(this.getArtistsFormatted(results));
+
 				
 				// console.log('data.artists',data.artists);
-				let filtered = this.getExactMatches(data.artists.items, q);
-				return filtered[searchIndex];
+				const filteredResults = this.getExactMatches(results, q);
+				// Just grab the first result that has an exact artist name match.
+				return filteredResults[0];
 			})
 			.map(artist => {
 				let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
@@ -64,5 +73,17 @@ export class GetArtistService {
 	}
 
 	// If we plan on saving the other potential results, we should probably create a method that transforms the artist objects into our own Artist object.
+	getArtistsFormatted(list){
+		return list.map(artist => {
+			let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
+			return {
+				name: artist.name,
+				id: artist.id,
+				url: artist.external_urls.spotify,
+				imageURL,
+				popularity: artist.popularity
+			}
+		});
+	}
 
 }
