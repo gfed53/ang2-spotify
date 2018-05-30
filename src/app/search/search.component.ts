@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PageScrollConfig } from 'ng2-page-scroll';
+import { ModalDialogService, SimpleModalComponent, IModalDialogOptions, IModalDialogSettings } from 'ngx-modal-dialog';
 
 // Services
 import { GetArtistService } from '../services/get-artist.service';
@@ -17,7 +18,6 @@ import { Artist } from '../types/artist';
 })
 export class SearchComponent implements OnInit {
 	
-	// currentArtist: Artist;
 	currentResults: Artist[];
 	searchIndex: number = 0;
 	isFetching = {val: false};
@@ -26,7 +26,9 @@ export class SearchComponent implements OnInit {
 	constructor(
 		private _getArtistService: GetArtistService,
 		private _baseArtistService: BaseArtistService,
-		private _baseArtistResultsService: BaseArtistResultsService
+		private _baseArtistResultsService: BaseArtistResultsService,
+		private _modalDialogService: ModalDialogService,
+		private _viewContainer: ViewContainerRef
 	){}
 
 	submit(f): void {
@@ -46,7 +48,6 @@ export class SearchComponent implements OnInit {
 		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search, searchIndex)
 		.subscribe(artist => {
-			// this.currentArtist = artist;
 			this._baseArtistService.update(artist);
 			this.hasError.val = false;
 			this.isFetching.val = false;
@@ -55,13 +56,29 @@ export class SearchComponent implements OnInit {
 		});
 	}
 
+	// Mock for now.
+	openSimpleModal() {
+    this._modalDialogService.openDialog(this._viewContainer, {
+      title: 'Mock',
+      childComponent: SimpleModalComponent,
+      settings: {
+				// overlayClass: 'my-modal-overlay',
+				modalClass: 'my-modal',
+        closeButtonClass: 'my-modal-close'
+      },
+      data: {
+        text: 'Hihihi'
+      }
+    });
+  }
+
 	ngOnInit() {
 
 		this._baseArtistResultsService.baseArtistResults$
 		.subscribe((results) => {
 			this.currentResults = results;
 			console.log('this.currentResults',this.currentResults);
-		})
+		});
 
 		// Focus on input
 		setTimeout(() => { document.getElementById('artist-search').focus();	}, 0);

@@ -7,9 +7,10 @@
 				<button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</div>
 			<!-- Below will be re-implemented with a different user experience -->
-			<!-- <div class="container-form-inner">
-				<button type="button" class="my-btn btn-next-match" *ngIf="currentArtist" (click)="findNextResult(f)">Not the right match?</button>
-			</div> -->
+			<!-- *ngIf="currentResults && currentResults.length > 1"  -->
+			<div class="container-form-inner" >
+				<button type="button" class="my-btn btn-next-match" (click)="openSimpleModal()">Not the right match?</button>
+			</div>
 		</form>
 	</div>
 	<artist-result [isFetching]="isFetching" [(hasError)]="hasError"></artist-result>

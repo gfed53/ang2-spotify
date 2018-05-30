@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  
 import { AppComponent }   from './app.component';
@@ -6,7 +6,7 @@ import { SearchComponent } from './search/search.component';
 import { OAuthComponent } from './oauth/oauth.component';
 import { CheckAuthComponent } from './check-auth/check-auth.component';
 
-//Guards
+// Guards
 import { HasTokenGuard } from './guards/has-token.guard';
 import { NoTokenGuard } from './guards/no-token.guard';
 
