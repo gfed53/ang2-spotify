@@ -11,6 +11,9 @@ import { BaseArtistResultsService } from '../services/base-artist-results.servic
 // Types
 import { Artist } from '../types/artist';
 
+// Components
+import { MyModalComponent } from '../my-modal/my-modal.component';
+
 @Component({
   selector: 'search',
   templateUrl: './search.component.html',
@@ -42,8 +45,6 @@ export class SearchComponent implements OnInit {
 		this.searchArtist(f, this.searchIndex);
 	}
 
-	
-
 	searchArtist(f: NgForm, searchIndex: number): void {
 		this.isFetching.val = true;
 		this._getArtistService.getArtist(f.value.search, searchIndex)
@@ -70,6 +71,22 @@ export class SearchComponent implements OnInit {
         text: 'Hihihi'
       }
     });
+	}
+	
+	openCustomModal() {
+		// console.log('running');
+		// console.log('this.currentResults in modal function',this.currentResults);
+    this._modalDialogService.openDialog(this._viewContainer, {
+      title: 'How about these?',
+      childComponent: MyModalComponent,
+      settings: {
+				modalClass: 'my-modal',
+        closeButtonClass: 'my-modal-close'
+      },
+      data: {
+				currentResults: this.currentResults
+			}
+    });
   }
 
 	ngOnInit() {
@@ -77,7 +94,7 @@ export class SearchComponent implements OnInit {
 		this._baseArtistResultsService.baseArtistResults$
 		.subscribe((results) => {
 			this.currentResults = results;
-			console.log('this.currentResults',this.currentResults);
+			// console.log('this.currentResults',this.currentResults);
 		});
 
 		// Focus on input
