@@ -25,6 +25,7 @@ import { GetApiKeyService } from './services/get-api-key.service';
 import { SmoothScrollService } from './services/smooth-scroll.service';
 import { BaseArtistService } from './services/base-artist.service';
 import { BaseArtistResultsService } from './services/base-artist-results.service';
+import { TabAccessService } from './services/tab-access.service';
 
 
 // Directives
@@ -65,6 +66,7 @@ import { NoTokenGuard } from './guards/no-token.guard';
   SmoothScrollService,
   BaseArtistService,
   BaseArtistResultsService,
+  TabAccessService,
 	HasTokenGuard,
 	NoTokenGuard
   ],

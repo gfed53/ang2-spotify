@@ -1,3 +1,8 @@
-<p>
-  my-modal works!
-</p>
+<div>
+  <button id="btn-sample">Sample Button</button>
+  <div *ngFor="let result of currentResults">
+    <img class="modal-img-result" src="{{result.imageURL}}" alt="">
+    <p>{{result.name}}</p>
+    <input type="radio" name="pickedResult" [value]="result.name">
+  </div>
+</div>

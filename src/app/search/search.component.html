@@ -8,7 +8,7 @@
 			</div>
 			<!-- Below will be re-implemented with a different user experience -->
 			<!-- *ngIf="currentResults && currentResults.length > 1"  -->
-			<div class="container-form-inner" >
+			<div class="container-form-inner" *ngIf="currentResults && currentResults.length > 1">
 				<button type="button" class="my-btn btn-next-match" (click)="openCustomModal()">Not the right match?</button>
 			</div>
 		</form>
