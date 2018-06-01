@@ -77,7 +77,7 @@ export class SearchComponent implements OnInit {
 		// console.log('running');
 		// console.log('this.currentResults in modal function',this.currentResults);
     this._modalDialogService.openDialog(this._viewContainer, {
-      title: 'How about these?',
+      title: 'How about one of these?',
       childComponent: MyModalComponent,
       settings: {
 				modalClass: 'my-modal',

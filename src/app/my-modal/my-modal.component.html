@@ -1,11 +1,10 @@
 <div>
   <form>
-    <!-- <button id="btn-sample">Sample Button</button> -->
     <div class="modal-result-list">
       <div class="modal-result" *ngFor="let result of currentResults">
         <img class="modal-img-result" src="{{result.imageURL}}" alt="">
-        <p>{{result.name}}</p>
-        <input type="radio" name="pickedResult" [value]="result.name">
+        <label [for]="result.name">{{result.name}}</label>
+        <input type="radio" name="selectedResult" [(ngModel)]="selectedResult" [value]="result">
       </div>
     </div>
   </form>
