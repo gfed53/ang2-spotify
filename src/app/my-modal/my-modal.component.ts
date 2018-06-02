@@ -24,12 +24,18 @@ export class MyModalComponent implements IModalDialog {
     private _baseArtistService: BaseArtistService
   ) {
     this.actionButtons = [
-      { text: 'Update Artist', onAction: () => {
-        // console.log('this.selectedResult',this.selectedResult);
-        this._baseArtistService.update(this.selectedResult);
-        return true;
-      } },
-      { text: 'Close Without Changing' }
+      { text: 'Update Artist', 
+        onAction: () => {
+          // console.log('this.selectedResult',this.selectedResult);
+          this._baseArtistService.update(this.selectedResult);
+          return true;
+        },
+        buttonClass: 'my-btn btn-modal-action'
+      },
+      { 
+        text: 'Close Without Changing',
+        buttonClass: 'my-btn btn-modal-action'
+      }
     ];
   }
  
