@@ -8,6 +8,9 @@ export class TabAccessService {
     let element = parentEl[0],
     focusableEls = element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
 
+    // Automatically set focus to first element in group
+    focusableEls[0].focus();
+
     parentEl.on('keydown', (e) => {
       this.handleKeyDown(focusableEls, e);
     });
