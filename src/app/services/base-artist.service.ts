@@ -16,6 +16,6 @@ export class BaseArtistService {
 
   update(artist: Artist): void {
     this.baseArtistSource.next(artist);
-    // console.log('this.baseArtistSource',this.baseArtistSource);
+    console.log('this.baseArtistSource',this.baseArtistSource);
   }
 }

@@ -1,10 +1,12 @@
 <div>
   <form class="modal-form">
     <div class="modal-result-list">
-      <div class="modal-result" *ngFor="let result of currentResults">
-        <img class="modal-img-result" src="{{result.imageURL}}" alt="">
-        <label [for]="result.name">{{result.name}}</label>
-        <input type="radio" name="selectedResult" [(ngModel)]="selectedResult" [value]="result">
+      <div class="modal-result" [ngClass]="{'modal-result-selected': selectedResult && result.id === selectedResult.id}" *ngFor="let result of currentResults">
+        <div class="modal-result-inner">
+          <img class="modal-img-result" src="{{result.imageURL}}" alt="">
+          <label [for]="result.name">{{result.name}}</label>
+          <input type="radio" name="selectedResult" [(ngModel)]="selectedResult" [value]="result">
+        </div>
       </div>
     </div>
   </form>
