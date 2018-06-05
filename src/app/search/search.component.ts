@@ -22,6 +22,7 @@ import { MyModalComponent } from '../my-modal/my-modal.component';
 export class SearchComponent implements OnInit {
 	
 	currentResults: Artist[];
+	filteredCurrentResults: Artist[];
 	searchIndex: number = 0;
 	isFetching = {val: false};
 	hasError = {val: false};
@@ -84,7 +85,7 @@ export class SearchComponent implements OnInit {
         closeButtonClass: 'my-modal-close'
       },
       data: {
-				currentResults: this.currentResults
+				currentResults: this.filteredCurrentResults
 			}
     });
   }
@@ -95,6 +96,12 @@ export class SearchComponent implements OnInit {
 		.subscribe((results) => {
 			this.currentResults = results;
 			// console.log('this.currentResults',this.currentResults);
+		});
+
+		// We want to 
+		this._baseArtistService.baseArtist$
+		.subscribe((baseResult) => {
+			this.filteredCurrentResults = this.currentResults.filter((result) => result.id !== baseResult.id);
 		});
 
 		// Focus on input

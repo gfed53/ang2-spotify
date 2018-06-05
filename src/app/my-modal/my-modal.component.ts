@@ -41,6 +41,7 @@ export class MyModalComponent implements IModalDialog {
  
   dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>>) {
     this.currentResults = options.data.currentResults;
+    console.log('this.currentResults in dialogInit',this.currentResults);
     setTimeout(() => { 
       this._tabAccessService.setFocusBoundary($('.my-modal'));
     }, 0);
