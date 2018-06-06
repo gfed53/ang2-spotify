@@ -22,8 +22,14 @@ body
 // 	height: 100%
 // 	background: #0000004d
 
+.fade
+	transition: opacity 250ms ease-in-out
+
+.fade:not(.show)
+	opacity: 0
+
 .modal-backdrop
-	transition: 250ms ease-in-out all
+	// transition: 250ms ease-in-out all
 	position: fixed
 	top: 0
 	right: 0
@@ -43,7 +49,8 @@ body
 
 
 
-.my-modal
+.modal
+	// transition: 250ms ease-in-out all
 	background: $white
 	position: absolute
 	top: 10%
@@ -57,10 +64,26 @@ body
 	z-index: 2
 	// overflow: scroll
 
+.modal.show
+	opacity: 1
+
+// Overriding library's use of display: flex
+.ngx-modal
+	display: block !important
+
+
 .modal-footer
   padding: 1em
 
 .my-modal-close
 	position: absolute
 	top: 5px
-	right: 5px
+	right: 10px
+	font-size: 1em
+	transform: scaleX(1.2)
+	background: $spotify-green
+	color: #fff
+	cursor: pointer
+	&:before
+		// TODO: Put fontawesome cancel icon here
+		content: "X"

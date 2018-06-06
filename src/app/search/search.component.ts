@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
       childComponent: SimpleModalComponent,
       settings: {
 				// overlayClass: 'my-modal-overlay',
-				modalClass: 'my-modal',
+				modalClass: 'my-modal fade',
         closeButtonClass: 'my-modal-close'
       },
       data: {
@@ -81,7 +81,7 @@ export class SearchComponent implements OnInit {
       title: 'How about one of these?',
       childComponent: MyModalComponent,
       settings: {
-				modalClass: 'my-modal',
+				// modalClass: 'my-modal',
         closeButtonClass: 'my-modal-close'
       },
       data: {
@@ -95,13 +95,14 @@ export class SearchComponent implements OnInit {
 		this._baseArtistResultsService.baseArtistResults$
 		.subscribe((results) => {
 			this.currentResults = results;
-			// console.log('this.currentResults',this.currentResults);
+			console.log('this.currentResults',this.currentResults);
 		});
 
-		// We want to 
 		this._baseArtistService.baseArtist$
 		.subscribe((baseResult) => {
 			this.filteredCurrentResults = this.currentResults.filter((result) => result.id !== baseResult.id);
+			console.log('baseResult',baseResult);
+			console.log('this.filteredCurrentResults',this.filteredCurrentResults);
 		});
 
 		// Focus on input

@@ -35,6 +35,10 @@ export class MyModalComponent implements IModalDialog {
       { 
         text: 'Close Without Changing',
         buttonClass: 'my-btn btn-modal-action'
+      },
+      {
+        text: '',
+        buttonClass: 'my-modal-close'
       }
     ];
   }

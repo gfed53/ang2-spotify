@@ -35,15 +35,11 @@ export class GetArtistService {
 
 		return this._http.get<any>(url, httpOptions)
 			.map(data => {
-				/* 
-					TODO: If there's a case where the exact match isn't actually the right one (i.e. Eagles vs. The Eagles), there will be a different course of action.
-				*/
 
 				const results = data.artists.items;
 
-				// We will store all of the initial results in observable for later in case the artist we derive is not what the user wanted.
+				// We will store all of the initial results in observable for later in case the artist we find is not what the user wanted.
 				this._baseArtistResultsService.update(this.getArtistsFormatted(results));
-
 				
 				// console.log('data.artists',data.artists);
 				const filteredResults = this.getExactMatches(results, q);
