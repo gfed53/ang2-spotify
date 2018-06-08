@@ -46,7 +46,7 @@ export class GetArtistService {
 				return filteredResults[0];
 			})
 			.map(artist => {
-				let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
+				let imageURL = artist.images.length ? artist.images[0].url : 'assets/images/no-image-present.png';
 				return {
 					name: artist.name,
 					id: artist.id,
@@ -70,7 +70,7 @@ export class GetArtistService {
 	// If we plan on saving the other potential results, we should probably create a method that transforms the artist objects into our own Artist object.
 	getArtistsFormatted(list){
 		return list.map(artist => {
-			let imageURL = artist.images.length ? artist.images[0].url : 'http://images.clipartpanda.com/moderation-clipart-jixEg7AiE.png';
+			let imageURL = artist.images.length ? artist.images[0].url : 'assets/images/no-image-present.png';
 			return {
 				name: artist.name,
 				id: artist.id,
