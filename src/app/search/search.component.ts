@@ -55,33 +55,15 @@ export class SearchComponent implements OnInit {
 			this.isFetching.val = false;
 		}, e => {
 			this.hasError.val = true;
+			this.isFetching.val = false;
 		});
-	}
-
-	// Mock for now.
-	openSimpleModal() {
-    this._modalDialogService.openDialog(this._viewContainer, {
-      title: 'Mock',
-      childComponent: SimpleModalComponent,
-      settings: {
-				// overlayClass: 'my-modal-overlay',
-				modalClass: 'my-modal fade',
-        closeButtonClass: 'my-modal-close'
-      },
-      data: {
-        text: 'Hihihi'
-      }
-    });
 	}
 	
 	openCustomModal() {
-		// console.log('running');
-		// console.log('this.currentResults in modal function',this.currentResults);
     this._modalDialogService.openDialog(this._viewContainer, {
       title: 'How about one of these?',
       childComponent: MyModalComponent,
       settings: {
-				// modalClass: 'my-modal',
         closeButtonClass: 'my-modal-close'
       },
       data: {
@@ -95,14 +77,11 @@ export class SearchComponent implements OnInit {
 		this._baseArtistResultsService.baseArtistResults$
 		.subscribe((results) => {
 			this.currentResults = results;
-			console.log('this.currentResults',this.currentResults);
 		});
 
 		this._baseArtistService.baseArtist$
 		.subscribe((baseResult) => {
 			this.filteredCurrentResults = this.currentResults.filter((result) => result.id !== baseResult.id);
-			console.log('baseResult',baseResult);
-			console.log('this.filteredCurrentResults',this.filteredCurrentResults);
 		});
 
 		// Focus on input

@@ -50,10 +50,6 @@ export class TabAccessService {
         }
       
         break;
-
-      // case KEY_ESC:
-      //   closeCB();
-      //   break;
         
       default:
         break;

@@ -41,7 +41,6 @@ export class GetArtistService {
 				// We will store all of the initial results in observable for later in case the artist we find is not what the user wanted.
 				this._baseArtistResultsService.update(this.getArtistsFormatted(results));
 				
-				// console.log('data.artists',data.artists);
 				const filteredResults = this.getExactMatches(results, q);
 				// Just grab the first result that has an exact artist name match.
 				return filteredResults[0];

@@ -26,7 +26,6 @@ export class MyModalComponent implements IModalDialog {
     this.actionButtons = [
       { text: 'Update Artist', 
         onAction: () => {
-          // console.log('this.selectedResult',this.selectedResult);
           this._baseArtistService.update(this.selectedResult);
           return true;
         },
@@ -45,7 +44,6 @@ export class MyModalComponent implements IModalDialog {
  
   dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>>) {
     this.currentResults = options.data.currentResults;
-    console.log('this.currentResults in dialogInit',this.currentResults);
     setTimeout(() => { 
       this._tabAccessService.setFocusBoundary($('.modal'));
     }, 0);

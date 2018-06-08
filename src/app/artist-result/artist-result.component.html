@@ -2,7 +2,7 @@
 	<p class="p-lg">Searching..</p>
 </section>
 <section *ngIf="hasError.val">
-	<p class="p-lg">Sorry, an error occured..</p>
+	<p class="p-lg">Sorry, we couldn't find an artist for you. Please make a different search or try again later.</p>
 </section>
 <section class="artist-result-container" *ngIf="currentArtist && !isFetching.val && !hasError.val" [@flyInOut]="currentArtist">
 	<h1>{{ currentArtist.name }}</h1>

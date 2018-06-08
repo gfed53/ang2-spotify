@@ -6,8 +6,6 @@
 				<input id="artist-search" name="search" ngModel #search="ngModel">
 				<button type="submit" class="btn-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</div>
-			<!-- Below will be re-implemented with a different user experience -->
-			<!-- *ngIf="currentResults && currentResults.length > 1"  -->
 			<div class="container-form-inner" *ngIf="currentResults && currentResults.length > 1">
 				<button type="button" class="my-btn btn-next-match" (click)="openCustomModal()">Not the right match?</button>
 			</div>

@@ -21,7 +21,6 @@ import { Artist } from '../types/artist';
   selector: 'artist-result',
   templateUrl: './artist-result.component.html',
   styleUrls: ['./artist-result.component.sass'],
-  // flyInOut animation to be used on artist-result-container
   animations: [
   trigger('flyInOut', [
     state('in', style({transform: 'translateX(0)'})),
@@ -55,7 +54,6 @@ export class ArtistResultComponent {
   ngOnInit() {
     this._baseArtistService.baseArtist$
     .subscribe((artist) => {
-      // console.log('artist',artist);
       this.currentArtist = artist;
     });
   }
@@ -65,7 +63,6 @@ export class ArtistResultComponent {
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
       this.currentArtist = artist;
-      // New
 			this._baseArtistService.update(artist);
       this.hasError.val = false;
       this.isFetching.val = false;
