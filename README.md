@@ -1,4 +1,4 @@
-# App using Angular 2/5 and the Spotify API
+# App using Angular 2+ and the Spotify API
 
 ## Live Demo
 
@@ -28,5 +28,5 @@ Note that some artists may not even have related mainstream or underground artis
 
 ## The Process
 
-Throughout the app's development, I gained experience with Angular 2/4 and TypeScript. This app was originally developed with Angular 1.x, so through the migration to the next evolution of Angular I learned more about the vastly different architecture based around Web Components, as well as static typing which is one of the many features TypeScript provides, and more.
+Throughout the app's development, I gained experience with Angular 2+ and TypeScript. This app was originally developed with AngularJS (1.x), so through the migration to the next evolution of Angular I learned more about the vastly different architecture based around Web Components, as well as static typing which is one of the many features TypeScript provides, and more.
 
