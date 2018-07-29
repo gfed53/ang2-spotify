@@ -26,6 +26,7 @@ import { SmoothScrollService } from './services/smooth-scroll.service';
 import { BaseArtistService } from './services/base-artist.service';
 import { BaseArtistResultsService } from './services/base-artist-results.service';
 import { TabAccessService } from './services/tab-access.service';
+import { RelatedSearchCountService } from './services/related-search-count.service';
 
 
 // Directives
@@ -67,6 +68,7 @@ import { NoTokenGuard } from './guards/no-token.guard';
   BaseArtistService,
   BaseArtistResultsService,
   TabAccessService,
+  RelatedSearchCountService,
 	HasTokenGuard,
 	NoTokenGuard
   ],
