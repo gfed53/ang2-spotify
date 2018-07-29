@@ -7,6 +7,7 @@ import { ModalDialogService, SimpleModalComponent, IModalDialogOptions, IModalDi
 import { GetArtistService } from '../services/get-artist.service';
 import { BaseArtistService } from '../services/base-artist.service';
 import { BaseArtistResultsService } from '../services/base-artist-results.service';
+import { RelatedSearchCountService } from '../services/related-search-count.service';
 
 // Types
 import { Artist } from '../types/artist';
@@ -31,18 +32,14 @@ export class SearchComponent implements OnInit {
 		private _getArtistService: GetArtistService,
 		private _baseArtistService: BaseArtistService,
 		private _baseArtistResultsService: BaseArtistResultsService,
+		private _relatedSearchCountService: RelatedSearchCountService,
 		private _modalDialogService: ModalDialogService,
 		private _viewContainer: ViewContainerRef
 	){}
 
-	submit(f): void {
+	submit(f: NgForm): void {
 		// New search, reset index to 0
 		this.searchIndex = 0;
-		this.searchArtist(f, this.searchIndex);
-	}
-
-	findNextResult(f: NgForm): void {
-		this.searchIndex++;
 		this.searchArtist(f, this.searchIndex);
 	}
 
@@ -81,7 +78,7 @@ export class SearchComponent implements OnInit {
 
 		this._baseArtistService.baseArtist$
 		.subscribe((baseResult) => {
-			this.filteredCurrentResults = this.currentResults.filter((result) => result.id !== baseResult.id);
+			this.filteredCurrentResults = this.currentResults ? this.currentResults.filter((result) => result.id !== baseResult.id) : null;
 		});
 
 		// Focus on input

@@ -13,6 +13,7 @@ import {
 import { GetRelatedService } from '../services/get-related.service';
 import { SmoothScrollService } from '../services/smooth-scroll.service';
 import { BaseArtistService } from '../services/base-artist.service';
+import { BaseArtistResultsService } from '../services/base-artist-results.service';
 
 // Types
 import { Artist } from '../types/artist';
@@ -45,7 +46,8 @@ export class ArtistResultComponent {
     private _getRelatedService: GetRelatedService,
     private _smoothScrollService: SmoothScrollService,
     private _elRef: ElementRef,
-    private _baseArtistService: BaseArtistService
+    private _baseArtistService: BaseArtistService,
+    private _baseArtistResultsService: BaseArtistResultsService,
 		){
       PageScrollConfig.defaultDuration = this._smoothScrollService.duration;
       PageScrollConfig.defaultEasingLogic = this._smoothScrollService.easingLogic;
@@ -63,7 +65,11 @@ export class ArtistResultComponent {
 		this._getRelatedService.getRelated(id, type)
 		.subscribe(artist => {
       this.currentArtist = artist;
-			this._baseArtistService.update(artist);
+      this._baseArtistService.update(artist);
+      
+      // Clear the baseArtistsResults once we start grabbing related artists
+      this._baseArtistResultsService.update(null);
+
       this.hasError.val = false;
       this.isFetching.val = false;
     }, e => {

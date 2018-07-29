@@ -67,7 +67,7 @@ export class GetArtistService {
 		})
 	}
 
-	// If we plan on saving the other potential results, we should probably create a method that transforms the artist objects into our own Artist object.
+	// A method that transforms the artist objects into our own Artist object.
 	getArtistsFormatted(list){
 		return list.map(artist => {
 			let imageURL = artist.images.length ? artist.images[0].url : 'assets/images/no-image-present.png';
