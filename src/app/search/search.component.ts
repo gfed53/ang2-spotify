@@ -7,7 +7,6 @@ import { ModalDialogService, SimpleModalComponent, IModalDialogOptions, IModalDi
 import { GetArtistService } from '../services/get-artist.service';
 import { BaseArtistService } from '../services/base-artist.service';
 import { BaseArtistResultsService } from '../services/base-artist-results.service';
-import { RelatedSearchCountService } from '../services/related-search-count.service';
 
 // Types
 import { Artist } from '../types/artist';
@@ -24,7 +23,6 @@ export class SearchComponent implements OnInit {
 	
 	currentResults: Artist[];
 	filteredCurrentResults: Artist[];
-	searchIndex: number = 0;
 	isFetching = {val: false};
 	hasError = {val: false};
 
@@ -32,24 +30,22 @@ export class SearchComponent implements OnInit {
 		private _getArtistService: GetArtistService,
 		private _baseArtistService: BaseArtistService,
 		private _baseArtistResultsService: BaseArtistResultsService,
-		private _relatedSearchCountService: RelatedSearchCountService,
 		private _modalDialogService: ModalDialogService,
 		private _viewContainer: ViewContainerRef
 	){}
 
 	submit(f: NgForm): void {
-		// New search, reset index to 0
-		this.searchIndex = 0;
-		this.searchArtist(f, this.searchIndex);
+		this.searchArtist(f);
 	}
 
-	searchArtist(f: NgForm, searchIndex: number): void {
+	searchArtist(f: NgForm): void {
 		this.isFetching.val = true;
-		this._getArtistService.getArtist(f.value.search, searchIndex)
+		this._getArtistService.getArtist(f.value.search)
 		.subscribe(artist => {
 			this._baseArtistService.update(artist);
 			this.hasError.val = false;
 			this.isFetching.val = false;
+			f.reset();
 		}, e => {
 			this.hasError.val = true;
 			this.isFetching.val = false;

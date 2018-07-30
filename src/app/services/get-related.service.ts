@@ -2,9 +2,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
-import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 import { Artist } from '../types/artist';
@@ -54,7 +52,7 @@ export class GetRelatedService {
 			});
 	}
 
-	//Filter functions
+	// Filter functions
 	getPopular(a: any[]): any[] {
 		return a.filter(artist => artist.popularity >= 50);
 	}
@@ -66,4 +64,5 @@ export class GetRelatedService {
 	getRandom(a: any[]): any {
 		return a[Math.floor(Math.random()*a.length)];
 	}
+	//
 }

@@ -2,10 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
-import { Artist } from '../types/artist';
 
 import { GetAuthTokenService } from './get-auth-token.service';
 import { BaseArtistService } from './base-artist.service';
@@ -20,7 +17,7 @@ export class GetArtistService {
 		private _baseArtistResultsService: BaseArtistResultsService
 	){}
 
-	getArtist(q: string, searchIndex: number = 0): any {
+	getArtist(q: string): any {
 		const token = this._getAuthTokenService.token;
 		const url = 'https://api.spotify.com/v1/search';
 		const params = new HttpParams()

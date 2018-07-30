@@ -2,7 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,8 +25,6 @@ import { SmoothScrollService } from './services/smooth-scroll.service';
 import { BaseArtistService } from './services/base-artist.service';
 import { BaseArtistResultsService } from './services/base-artist-results.service';
 import { TabAccessService } from './services/tab-access.service';
-import { RelatedSearchCountService } from './services/related-search-count.service';
-
 
 // Directives
 import { ScrollDirective } from './directives/scroll.directive';
@@ -35,8 +32,6 @@ import { ScrollDirective } from './directives/scroll.directive';
 // Guards
 import { HasTokenGuard } from './guards/has-token.guard';
 import { NoTokenGuard } from './guards/no-token.guard';
-
-
 
 @NgModule({
   declarations: [
@@ -68,7 +63,6 @@ import { NoTokenGuard } from './guards/no-token.guard';
   BaseArtistService,
   BaseArtistResultsService,
   TabAccessService,
-  RelatedSearchCountService,
 	HasTokenGuard,
 	NoTokenGuard
   ],
